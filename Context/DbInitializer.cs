@@ -54,9 +54,9 @@ namespace Medics.Context
             var salt = HashingHelper.GenerateSalt();
             var admin = context.Roles.Where(r => r.RoleName == "Admin").SingleOrDefault();
 
-            var users = new User[]
+            var users = new Outgoing[]
             {
-                new User()
+                new Outgoing()
                 {
                     UserName = "admin",
                     HashSalt = salt,

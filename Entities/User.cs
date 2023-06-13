@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Medics.Entities
 {
-    public class User : BaseEntity
+    public class Outgoing : BaseEntity
     {
         public string UserName { get; set; }
         public string HashSalt { get; set; }

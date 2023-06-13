@@ -1,6 +1,9 @@
 using Medics.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,21 +18,23 @@ namespace Medics.Context.EntityConfiguration
                 builder.HasKey(dc => dc.Id);
 
                 builder.HasOne(dc => dc.Drug)
+                   .WithMany(c => c.DrugCategory)
+                   .HasForeignKey(dc => dc.UserId)
+                   .IsRequired();
+
+
+            builder.HasOne(dc => dc.Category)
                        .WithMany(d => d.DrugCategory)
                        .HasForeignKey(d => d.DrugId)
                        .IsRequired();
 
-                builder.HasOne(dc => dc.User)
-                        .WithMany(c => c.Category)
-                        .HasForeignKey(dc => dc.UserId)
-                        .IsRequired();
+               
+                
 
-                builder.HasMany(c => c.DrugCategories)
-                       .WithOne(cr => cr.Drug)
-                       .IsRequired();
+
             
-
-
+   
+   
         }
     }
 }

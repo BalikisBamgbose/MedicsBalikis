@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Context",
+    "\\Context\\EntityConfiguration",
     "\\Models"
   ],
-  "SelectedNode": "\\Medics.csproj",
+  "SelectedNode": "\\Context\\EntityConfiguration\\IncomingEntityTypeConfiguration.cs",
   "PreviewInSolutionExplorer": false
 }

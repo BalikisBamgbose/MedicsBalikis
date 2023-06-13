@@ -7,6 +7,7 @@ namespace Medics.Entities
 {
     public class DrugCategory : BaseEntity
     {
+        public int UserId { get; set; }
         public int DrugId {get; set;}
         public Drug Drug {get; set;}
         public int CategoryId {get; set;}

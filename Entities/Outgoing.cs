@@ -7,7 +7,6 @@ namespace Medics.Entities
 {
     public class Outgoing : BaseEntity
     {
-        public int Id {get; set;}
         public string Item {get; set;}
         public string Name {get; set;}  
         public string DeliveredTo {get; set;}  

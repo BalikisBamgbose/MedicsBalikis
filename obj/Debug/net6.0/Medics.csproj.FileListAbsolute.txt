@@ -1,0 +1,9 @@
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.csproj.AssemblyReference.cache
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.AssemblyInfoInputs.cache
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.AssemblyInfo.cs
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.csproj.CoreCompileInputs.cache
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.RazorAssemblyInfo.cache
+C:\Users\IBCIRCUIT\Desktop\Medics\obj\Debug\net6.0\Medics.RazorAssemblyInfo.cs

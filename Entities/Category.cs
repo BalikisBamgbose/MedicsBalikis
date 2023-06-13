@@ -9,6 +9,6 @@ namespace Medics.Entities
     {
          public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<DrugCategory> CategoryQuestions { get; set; } = new HashSet<DrugCategory>();
+        public ICollection<DrugCategory> DrugCategory { get; set; } = new HashSet<DrugCategory>();
     }
 }

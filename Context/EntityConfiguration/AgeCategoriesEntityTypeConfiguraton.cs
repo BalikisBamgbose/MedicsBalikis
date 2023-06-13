@@ -1,3 +1,6 @@
+using Medics.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +15,13 @@ namespace Medics.Context.EntityConfiguration
             builder.ToTable("AgeCategories");
 
             builder.HasKey(ac => ac.Id);
-                             
+
             builder.HasOne(ac => ac.Age)
                    .WithMany(a => a.AgeCategories)
-                   .HasForeignKey(ag =>  ac.AgeId)
+                   .HasForeignKey(ag => ac.AgeId)
                    .IsRequired();
 
-            builder.HasOne(ac => ac.User)
-                    .WithMany(c => c.Categories)
-                    .HasForeignKey(ac => ac.UserId)
-                    .IsRequired();
-
-            builder.HasMany(c => c.AgeCategories)
+            builder.HasMany(c => c.Categories)
                    .WithOne(cr => cr.Age)
                    .IsRequired();
         }

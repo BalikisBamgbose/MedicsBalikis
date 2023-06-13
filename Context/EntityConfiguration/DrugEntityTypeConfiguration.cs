@@ -31,9 +31,6 @@ namespace Medics.Context.EntityConfiguration
 
             builder.Property(d => d.ImageUrl)
                 .HasColumnType("varchar(255)");
-
-            builder.HasIndex(d => d.Description)
-             .IsUnique();
         }
         
     }

@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Medics.Models.Role
 {
-    public class RoleResponseModel
-    {
-        public class RoleResponseModel : BaseResponseModel
+    
+    public class RoleResponseModel : BaseResponseModel
     {
         public RoleViewModel Data { get; set; }
     }
@@ -16,5 +15,5 @@ namespace Medics.Models.Role
     {
         public List<RoleViewModel> Data { get; set; }
     }
-    }
+   
 }

@@ -10,8 +10,7 @@ namespace Medics.Entities
         public string Name {get; set;}
         public string ReturnDate {get; set;}
         public string ReturnId {get; set;}
-        public string Quantity {get; set;}
-        public string InvoiceNo {get; set;}
+        public string Quantity { get; set; }
         public string ReturnedBy {get; set;}
     }
 }

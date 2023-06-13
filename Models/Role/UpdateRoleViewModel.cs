@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Medics.Models.Role
 {
+    
     public class UpdateRoleViewModel
-    {
-        public class UpdateRoleViewModel
     {
         public string Id { get; set; }
 
@@ -18,5 +19,5 @@ namespace Medics.Models.Role
         [MaxLength(200)]
         public string Description { get; set; }
     }
-    }
+    
 }

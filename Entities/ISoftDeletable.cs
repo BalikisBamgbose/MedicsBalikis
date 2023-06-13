@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Medics.Entities
 {
-    public interface ISoftDeletable : BaseEntity
+    public interface ISoftDeletable 
     {
         public bool IsDeleted { get; set; }
     }

@@ -27,7 +27,7 @@ namespace Medics.Context.EntityConfiguration
                    .HasMaxLength(200);
 
             builder.HasMany(r => r.Users)
-                   .WithOne(u => u.Role)
+                   .WithOne(r => r.Role)
                    .HasForeignKey(u => u.RoleId);
         }
     }

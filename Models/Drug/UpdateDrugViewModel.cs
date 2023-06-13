@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,12 +10,12 @@ namespace Medics.Models.Drug
     {
         public List<string> DrugIds { get; set; }
         public string DrugId { get; set; }
-        public List<Drug> Drugs { get; set; }
+        public List<string> Drugs { get; set; }
         
         [Required(ErrorMessage = "Enter Drug Name!")]
         [MinLength(3, ErrorMessage = "The minimum lenghh is 3")]
         [MaxLength(150, ErrorMessage = "The Maximum length is 150")]
-        public string Drugs { get; set; }
+        public string Drug { get; set; }
 
         [Required(ErrorMessage = "Enter price")]
         public string Prices{ get; set; }

@@ -10,7 +10,7 @@ namespace Medics.Models.Age
         public AgeViewModel Data { get; set; }
     }
 
-    public class AgeResponseModel : BaseResponseModel
+    public class AgesResponseModel : BaseResponseModel
     {
         public List<AgeViewModel> Data { get; set; }
     }

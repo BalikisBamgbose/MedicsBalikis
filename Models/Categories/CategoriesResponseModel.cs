@@ -5,16 +5,13 @@ using System.Threading.Tasks;
 
 namespace Medics.Models.Categories
 {
-    public class CategoriesResponseModel
-    {
-         public class CategoriesResponseModel : BaseResponseModel
+            public class CategoriesResponseModel : BaseResponseModel
             {
                 public CategoriesViewModel Data { get; set; }
             }
 
-            public class CategoriesResponseModel : BaseResponseModel
+            public class CategoriessResponseModel : BaseResponseModel
             {
                 public List<CategoriesViewModel> Data { get; set; }
             }
-    }
 }

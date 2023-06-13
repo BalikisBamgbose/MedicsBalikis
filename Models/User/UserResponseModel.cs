@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Medics.Models.User
-{
-    public class UserResponseModel
-    {
+{    
         public class UserResponseModel : BaseResponseModel
             {
                 public UserViewModel Data { get; set; }
@@ -16,5 +14,4 @@ namespace Medics.Models.User
             {
                 public List<UserViewModel> Data { get; set; }
             }
-    }
 }

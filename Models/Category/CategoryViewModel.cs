@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Medics.Models.Drug;
+using Medics.Models.Drug;
+
 namespace Medics.Models.Category
 {
     public class CategoryViewModel

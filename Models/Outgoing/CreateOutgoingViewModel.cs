@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Medics.Models.Outgoing
 
         [Required(ErrorMessage = "Enter reason for outgoing item")]
         [MinLength  (5, ErrorMessage = "Minimum Lenght is 5")]
-        [MaxLenght(200)]
+        [MaxLength(200)]
         public string Purpose {get; set;}
         public string Sale {get; set;}
     }

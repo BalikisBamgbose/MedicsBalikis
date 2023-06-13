@@ -12,7 +12,7 @@ namespace Medics.Models.Category
                 public CategoryViewModel Data { get; set; }
             }
 
-            public class CategoryResponseModel : BaseResponseModel
+            public class CategorysResponseModel : BaseResponseModel
             {
                 public List<CategoryViewModel> Data { get; set; }
             }

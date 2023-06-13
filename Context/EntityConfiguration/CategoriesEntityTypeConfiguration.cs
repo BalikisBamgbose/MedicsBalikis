@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Medics.Context.EntityConfiguration
 {
-    public class CategoriesEntityTypeConfiguration
+    public class CategoriesEntityTypeConfiguration : IEntityTypeConfiguration<Categories>
     {
         public void Configure(EntityTypeBuilder<Categories> builder)
         {

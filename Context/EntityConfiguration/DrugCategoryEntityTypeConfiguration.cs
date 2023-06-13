@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Medics.Context.EntityConfiguration
 {
-    public class DrugCategoryEntityTypeConfiguration
+    public class DrugCategoryEntityTypeConfiguration : IEntityTypeConfiguration<DrugCategory>
     {
         public void Configure(EntityTypeBuilder<DrugCategory> builder)
         {

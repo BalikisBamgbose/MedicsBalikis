@@ -1,4 +1,5 @@
 using Medics.Entities;
+using Medics.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,9 +55,9 @@ namespace Medics.Context
             var salt = HashingHelper.GenerateSalt();
             var admin = context.Roles.Where(r => r.RoleName == "Admin").SingleOrDefault();
 
-            var users = new Outgoing[]
+            var users = new User[]
             {
-                new Outgoing()
+                new User()
                 {
                     UserName = "admin",
                     HashSalt = salt,

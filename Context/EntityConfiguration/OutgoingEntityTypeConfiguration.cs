@@ -10,7 +10,7 @@ namespace Medics.Context.EntityConfiguration
 {
     public class OutgoingEntityTypeConfiguration : IEntityTypeConfiguration<Outgoing>
     {
-       public void configure(EntityTypeBuilder<Outgoing>builder) 
+       public void Configure(EntityTypeBuilder<Outgoing>builder) 
        {
             builder.ToTable("Outgoing");
             builder.HasKey(x => x.Id);

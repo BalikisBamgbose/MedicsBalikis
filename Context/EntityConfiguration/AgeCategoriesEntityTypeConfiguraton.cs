@@ -15,15 +15,18 @@ namespace Medics.Context.EntityConfiguration
             builder.ToTable("AgeCategories");
 
             builder.HasKey(ac => ac.Id);
+            
 
             builder.HasOne(ac => ac.Age)
                    .WithMany(a => a.AgeCategories)
-                   .HasForeignKey(ag => ac.AgeId)
+                   .HasForeignKey(ag => ag.AgeId)
                    .IsRequired();
 
-            builder.HasMany(c => c.Categories)
-                   .WithOne(cr => cr.Age)
-                   .IsRequired();
+            builder.HasOne(ac => ac.Categories)
+                    .WithMany(a => a.AgeCategories)
+                    .HasForeignKey(ag => ag.CategoriesId)
+                    .IsRequired();
+
         }
     }
 }

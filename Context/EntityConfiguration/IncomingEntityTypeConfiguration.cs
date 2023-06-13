@@ -11,10 +11,20 @@ namespace Medics.Context.EntityConfiguration
         {
             builder.ToTable("Incoming");
             builder.HasKey(x => x.Id);
-            builder.HasIndex(s => s.SupplierName);
-            builder.HasIndex(i => i.ItemName);
+
             builder.HasIndex(iv => iv.InvoiceNo);
-            builder.HasIndex(q => q.Quantity);
+
+            builder.Property(sp => sp.SupplierName)
+                .IsRequired()
+                .HasMaxLength(50);           
+
+            builder.Property(it => it.ItemName)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder.Property(q => q.Quantity)
+                .IsRequired()
+                .HasMaxLength(50);
 
         }
     }

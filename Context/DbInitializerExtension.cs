@@ -5,27 +5,27 @@ using System.Threading.Tasks;
 
 namespace Medics.Context
 {
-    public class DbInitializerExtension
+    internal static class DbInitializerExtension
     {
         public static IApplicationBuilder SeedToDatabase(this IApplicationBuilder app)
-    {
-        ArgumentNullException.ThrowIfNull(app, nameof(app));
+        {
+            ArgumentNullException.ThrowIfNull(app, nameof(app));
 
-        using var scope = app.ApplicationServices.CreateScope();
+            using var scope = app.ApplicationServices.CreateScope();
    
-        var services = scope.ServiceProvider;
+            var services = scope.ServiceProvider;
 
-        try
-        {
-            var context = services.GetRequiredService<MedicsContext>();
-            DbInitializer.Initialize(context);
+            try
+            {
+                var context = services.GetRequiredService<MedicsContext>();
+                DbInitializer.Initialize(context);
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return app;
         }
-        catch (Exception)
-        {
-
-        }
-
-        return app;
-    }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Medics.Context.EntityConfiguration
 {
-    public class AgeEntityTypeCnfiguration
+    public class AgeEntityTypeCnfiguration : IEntityTypeConfiguration<Age>
     {
         public void Configure(EntityTypeBuilder<Age> builder)
 		{
@@ -18,10 +18,8 @@ namespace Medics.Context.EntityConfiguration
 
             builder.Property(a => a.Description)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(200);
 
-            builder.HasIndex(a => a.Description)
-             .IsUnique();
 		}
     }
 }

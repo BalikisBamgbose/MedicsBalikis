@@ -15,8 +15,8 @@ namespace Medics.Context.EntityConfiguration
             builder.HasIndex(iv => iv.InvoiceNo);
 
             builder.Property(sp => sp.SupplierName)
-                .IsRequired()
-                .HasMaxLength(50);           
+                   .IsRequired()
+                   .HasMaxLength(50);           
 
             builder.Property(it => it.ItemName)
                 .IsRequired()

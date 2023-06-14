@@ -15,15 +15,18 @@ namespace Medics.Context.EntityConfiguration
             builder.ToTable("Drug");
             builder.HasKey(x => x.Id);
 
-
-            builder.HasMany(d => d.DrugCategory);
-            builder.HasOne(u => u.UserId);            
-
-            builder.HasKey(d => d.Id);
+            builder.HasOne(u => u.User)
+                   .WithMany(d=>d.Drug)
+                   .HasForeignKey(q => q.UserId)
+                   .IsRequired();
 
             builder.Property(d => d.Description)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            builder.HasMany(a => a.DrugCategory)
+                 .WithOne(a => a.Drug)
+                 .IsRequired();
 
             builder.HasIndex(d => d.Prices);
 
@@ -32,6 +35,6 @@ namespace Medics.Context.EntityConfiguration
             builder.Property(d => d.ImageUrl)
                 .HasColumnType("varchar(255)");
         }
-        
+
     }
 }

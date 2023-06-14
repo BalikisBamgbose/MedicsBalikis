@@ -27,13 +27,6 @@ namespace Medics.Context.EntityConfiguration
                        .WithMany(d => d.DrugCategory)
                        .HasForeignKey(d => d.DrugId)
                        .IsRequired();
-
-               
-                
-
-
-            
-   
    
         }
     }

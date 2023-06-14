@@ -12,10 +12,10 @@ namespace Medics.Entities
        public string CreatedBy {get; set;}
        public string ModifiedBy {get; set;}
        public DateTime DateCreated {get; set;}
-        public DateTime DatePurchased {get; set;}
+       public DateTime DatePurchased {get; set;}
        public string MgfDate {get; set;}
        public string ExpDate {get; set;}
-        public DateTime LastModified {get; set;}
+       public DateTime LastModified {get; set;}
        public bool IsDeleted {get; set;}
        public string InvoiceNo {get; set;}
        public string SupplyDate {get; set;}

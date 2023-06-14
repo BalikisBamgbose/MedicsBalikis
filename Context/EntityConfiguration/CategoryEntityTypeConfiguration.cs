@@ -25,6 +25,10 @@ namespace Medics.Context.EntityConfiguration
 
             builder.Property(c => c.Description)
                 .HasMaxLength(200);
+
+            builder.HasMany(a => a.DrugCategory)
+                 .WithOne(a => a.Category)
+                 .IsRequired();
         }
     }
 }

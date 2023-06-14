@@ -8,9 +8,9 @@ namespace Medics.Entities
     public class AgeCategories : BaseEntity
     {
        
-        public int AgeId {get; set;}
+        public string AgeId {get; set;}
         public Age Age {get; set;}
-        public int CategoriesId {get; set;}
+        public string CategoriesId {get; set;}
         public Categories Categories {get; set;}
     }
 }

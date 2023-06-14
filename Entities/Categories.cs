@@ -9,6 +9,6 @@ namespace Medics.Entities
     {
        public string Name  {get; set;} 
        public string  Description {get; set;}
-        public ICollection<AgeCategories> AgeCategories { get; set; } = new HashSet<AgeCategories>();
+       public ICollection<AgeCategories> AgeCategories { get; set; } = new HashSet<AgeCategories>();
     }
 }

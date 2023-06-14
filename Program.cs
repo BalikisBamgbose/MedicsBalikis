@@ -1,7 +1,13 @@
+using Medics.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<MedicsContext>(option =>
+    option.UseMySQL(builder.Configuration.GetConnectionString("MedicsContext")));
+builder.Services.AddScoped<DbInitializer>();
 
 var app = builder.Build();
 

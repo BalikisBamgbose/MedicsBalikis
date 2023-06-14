@@ -20,6 +20,12 @@ namespace Medics.Context.EntityConfiguration
                 .IsRequired()
                 .HasMaxLength(200);
 
-		}
+
+            builder.HasMany(a => a.AgeCategories)
+                 .WithOne(a => a.Age)
+                 .IsRequired();
+
+
+        }
     }
 }

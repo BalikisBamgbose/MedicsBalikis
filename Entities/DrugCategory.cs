@@ -7,10 +7,11 @@ namespace Medics.Entities
 {
     public class DrugCategory : BaseEntity
     {
-        public int UserId { get; set; }
-        public int DrugId {get; set;}
+        public string UserId { get; set; }
+        public User user{ get; set; }
+        public string DrugId {get; set;}
         public Drug Drug {get; set;}
-        public int CategoryId {get; set;}
+        public string CategoryId {get; set;}
         public Category Category {get; set;}
     }
 }

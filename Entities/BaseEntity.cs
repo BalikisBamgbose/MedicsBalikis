@@ -16,13 +16,6 @@ namespace Medics.Entities
        public string MgfDate {get; set;}
        public string ExpDate {get; set;}
        public DateTime LastModified {get; set;}
-       public bool IsDeleted {get; set;}
-       public string InvoiceNo {get; set;}
-       public string SupplyDate {get; set;}
-       public string BillValue {get; set;}
-       public string Bill {get; set;}
-       public string DeliveryDate {get; set;}
-       public string ReceiptNo {get; set;}
-        
+       public bool IsDeleted {get; set;}            
     }
 }

@@ -7,7 +7,6 @@ namespace Medics.Entities
 {
     public class Age : BaseEntity
     {
-       
        public string Description {get; set;}
        public ICollection<AgeCategories> AgeCategories { get; set; } = new HashSet<AgeCategories>();
     }

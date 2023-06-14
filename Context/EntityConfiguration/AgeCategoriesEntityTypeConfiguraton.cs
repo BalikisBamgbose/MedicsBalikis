@@ -18,7 +18,7 @@ namespace Medics.Context.EntityConfiguration
             
 
             builder.HasOne(ac => ac.Age)
-                   .WithMany(a => a.AgeCategories)
+                   .WithMany(ac => ac.AgeCategories)
                    .HasForeignKey(ag => ag.AgeId)
                    .IsRequired();
 

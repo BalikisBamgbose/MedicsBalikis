@@ -19,7 +19,7 @@ namespace Medics.Context.EntityConfiguration
 
                 builder.HasOne(dc => dc.Drug)
                    .WithMany(c => c.DrugCategory)
-                   .HasForeignKey(dc => dc.UserId)
+                   .HasForeignKey(dc => dc.CategoryId)
                    .IsRequired();
 
 

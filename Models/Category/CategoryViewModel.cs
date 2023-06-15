@@ -6,8 +6,9 @@ using Medics.Models.Drug;
 
 namespace Medics.Models.Category
 {
-    public class CategoryViewModel
+    public class CategoryViewModel :BaseResponseModel
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; } 
         public List<DrugViewModel> Drugs { get; set; }

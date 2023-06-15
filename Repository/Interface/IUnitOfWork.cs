@@ -6,7 +6,7 @@
         IUserRepository Users { get; }
         ICategoryRepository Category { get; }
         IAgeRepository Ages { get; }
-        ICategoryRepository Categorys { get; }
+        ICategoriesRepository Categories { get; }
         IDrugRepository Drugs { get; }
         IIncomingRepository Incomings { get; }
         IOutgoingRepository Outgoings { get; }

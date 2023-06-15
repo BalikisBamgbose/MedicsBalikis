@@ -4,17 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Medics.Models.Category
-{
-    public class CategoryResponseModel
+{ 
+    public class CategoryResponseModel : BaseResponseModel
     {
-        public class CategoriesResponseModel : BaseResponseModel
-            {
-                public CategoryViewModel Data { get; set; }
-            }
-
-            public class CategorysResponseModel : BaseResponseModel
-            {
-                public List<CategoryViewModel> Data { get; set; }
-            }
+            public CategoryViewModel Data { get; set; }
     }
+
+    public class CategorysResponseModel : BaseResponseModel
+    {
+        public List<CategoryViewModel> Data { get; set; }
+    }
+    
 }

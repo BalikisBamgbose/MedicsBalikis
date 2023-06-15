@@ -8,6 +8,7 @@ namespace Medics.Models.Categories
 {
     public class CategoriesViewModel
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; } 
         public List<AgeViewModel> Age { get; set; }

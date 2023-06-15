@@ -14,7 +14,7 @@ namespace Medics.Repository.Implementation
         public  IUserRepository Users { get; }
         public ICategoryRepository Category { get; }
         public IAgeRepository Ages { get; }
-        public ICategoryRepository Categorys { get; }
+        public ICategoriesRepository Categories { get; }
         public IDrugRepository Drugs { get; }
         public IIncomingRepository Incomings { get; }
         public IOutgoingRepository Outgoings { get; }
@@ -38,7 +38,7 @@ namespace Medics.Repository.Implementation
             Users = userRepository;
             Category = categoryRepository;
             Ages = ageRepository;
-            Categorys = categoryRepository;
+            Categories = categoriesRepository;
             Drugs = drugRepository;
             Incomings = incomingRepository;
             Outgoings = outgoingRepository;

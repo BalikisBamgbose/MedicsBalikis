@@ -18,13 +18,13 @@ namespace Medics.Context.EntityConfiguration
                 builder.HasKey(dc => dc.Id);
 
                 builder.HasOne(dc => dc.Drug)
-                   .WithMany(c => c.DrugCategory)
+                   .WithMany(c => c.DrugCategorys)
                    .HasForeignKey(dc => dc.CategoryId)
                    .IsRequired();
 
 
             builder.HasOne(dc => dc.Category)
-                       .WithMany(d => d.DrugCategory)
+                       .WithMany(d => d.DrugCategorys)
                        .HasForeignKey(d => d.DrugId)
                        .IsRequired();
    

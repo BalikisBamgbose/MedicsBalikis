@@ -21,7 +21,7 @@ namespace Medics.Repository.Implementation
         {
             var drug = _context.Drugs
                  .Include(c => c.User)  
-                 .Include(u => u.DrugCategory)
+                 .Include(u => u.DrugCategorys)
                  .Include(qr => qr.Prices)
                  .Include(d=>d.Description)
                  .Include(c => c.Ages)
@@ -47,7 +47,7 @@ namespace Medics.Repository.Implementation
             var drugs = _context.Drugs
                 .Include(uq => uq.Ages)
                 .Include(c => c.Description)
-                .Include(qr => qr.DrugCategory)
+                .Include(qr => qr.DrugCategorys)
                 .ToList();
 
             return drugs;

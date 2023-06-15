@@ -4,7 +4,7 @@
     {
         IRoleRepository Roles { get; }
         IUserRepository Users { get; }
-        ICategoryRepository Categories { get; }
+        ICategoryRepository Category { get; }
         IAgeRepository Ages { get; }
         ICategoryRepository Categorys { get; }
         IDrugRepository Drugs { get; }

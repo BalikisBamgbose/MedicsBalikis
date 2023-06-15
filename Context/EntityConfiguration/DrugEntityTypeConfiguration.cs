@@ -24,7 +24,7 @@ namespace Medics.Context.EntityConfiguration
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder.HasMany(a => a.DrugCategory)
+            builder.HasMany(a => a.DrugCategorys)
                  .WithOne(a => a.Drug)
                  .IsRequired();
 

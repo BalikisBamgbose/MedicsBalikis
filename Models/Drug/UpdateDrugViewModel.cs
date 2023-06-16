@@ -10,6 +10,7 @@ namespace Medics.Models.Drug
     {
         public List<string> DrugIds { get; set; }
         public string DrugId { get; set; }
+        public string Description { get; set; }
         public List<string> Drugs { get; set; }
         
         [Required(ErrorMessage = "Enter Drug Name!")]

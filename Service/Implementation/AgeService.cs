@@ -1,6 +1,7 @@
 using Medics.Models;
 using Medics.Models.Age;
 using Medics.Models.Role;
+using Medics.Repository.Interface;
 using Medics.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace Medics.Service.Implementation
 {
     public class Age : IAgeService
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUnitOfWork _unitOfWork;
         public BaseResponseModel CreateAge(CreateAgeViewModel request)
         {
             throw new NotImplementedException();

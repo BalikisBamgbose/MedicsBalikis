@@ -1,5 +1,6 @@
 using Medics.Entities;
 using Medics.Models;
+using Medics.Models.Category;
 using Medics.Models.Drug;
 using Medics.Repository.Interface;
 using Medics.Service.Interface;
@@ -40,7 +41,7 @@ namespace Medics.Service.Implementation
                 CreatedBy = createdBy,
             };
 
-            var category = _unitOfWork.Category.GetAllByIds(request.CategoryIds);
+            var category = _unitOfWork.Categorys.GetAllByIds(request.CategoryIds);
 
             var DrugCategorys = new HashSet<DrugCategory>();
 
@@ -116,27 +117,223 @@ namespace Medics.Service.Implementation
 
         public DrugsResponseModel DisplayDrug()
         {
-            throw new NotImplementedException();
+            var response = new DrugsResponseModel();
+
+            try
+            {
+                var drugs = _unitOfWork.Drugs.GetDrugs();
+
+                if (drugs.Count == 0)
+                {
+                    response.Message = "No drug found!";
+                    return response;
+                }
+
+                response.Data = drugs
+                    .Where(q => !q.IsDeleted)
+                    .Select(drug => new DrugViewModel
+                    { 
+                        DrugIds = drug.Id,                        
+                        Quantity = drug.Quantity,
+                        Prices = drug.Prices.ToString(),
+                        ImageUrl = drug.ImageUrl,
+                        UserId = drug.UserId,
+                        Drugs= drug.DrugName
+                            .Where(c => !c.IsDeleted)
+                            .Select(c => new CategoryViewModel
+                            {
+                                Id = c.Id,
+                                Name = c.Name,
+                                Description = c.Description,
+                                
+                            })
+                            .ToList()
+                    }).ToList();
+
+                response.Status = true;
+                response.Message = "Success";
+            }
+            catch (Exception ex)
+            {
+                response.Message = $"An error occured: {ex.Message}";
+                return response;
+            }
+
+            return response;
         }
 
         public DrugsResponseModel GetAllDrugs()
         {
-            throw new NotImplementedException();
+            var response = new DrugsResponseModel();
+
+            try
+            {
+                var IsInRole = _httpContextAccessor.HttpContext.User.IsInRole("Admin");
+                var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+                Expression<Func<Drug, bool>> expression = q => q.UserId == userIdClaim;
+
+                var drugs = IsInRole ? _unitOfWork.Drugs.GetDrugs() : _unitOfWork.Drugs.GetDrugs(expression);
+
+                if (drugs.Count == 0)
+                {
+                    response.Message = "No drug found!";
+                    return response;
+                }
+
+                response.Data = drugs
+                    .Where(q => q.IsDeleted == false)
+                    .Select(drug => new DrugViewModel
+                    {
+                        DrugIds = drug.Id,
+                        Quantity = drug.Quantity,
+                        Prices = drug.Prices.ToString(),
+                        ImageUrl = drug.ImageUrl,
+                        UserId = drug.UserId,
+                        Drugs = drug.DrugName
+                        .Select(c => new CategoryViewModel
+                        {
+                            Id = c.Id,
+                            Name = c.Name,
+                            Description = c.Description,
+                        }).ToList(),
+                    }).ToList();
+
+                response.Status = true;
+                response.Message = "Success";
+            }
+            catch (Exception ex)
+            {
+                response.Message = $"An error occured: {ex.StackTrace}";
+                return response;
+            }
+
+            return response;
         }
 
         public DrugResponseModel GetDrug(string drugId)
         {
-            throw new NotImplementedException();
+            var response = new DrugResponseModel();
+            var drugExist = _unitOfWork.Drugs.Exists(q => q.Id == drugId && q.IsDeleted == false);
+            var IsInRole = _httpContextAccessor.HttpContext.User.IsInRole("Admin");
+            var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+            var drug = new Drug();
+
+            if (!drugExist)
+            {
+                response.Message = $"Drug with id {drugId} does not exist!";
+                return response;
+            }
+
+            drug = IsInRole ? _unitOfWork.Drugs.GetDrug(q => q.Id == drugId && !q.IsDeleted) : 
+            _unitOfWork.Drugs.GetDrug(q => q.Id == drugId
+                                                && q.UserId == userIdClaim
+                                                && !q.IsDeleted);
+
+            if (drug is null)
+            {
+                response.Message = "Drug not found!";
+                return response;
+            }
+
+            response.Message = "Success";
+            response.Status = true;
+            response.Data = new DrugViewModel
+            {
+                DrugIds = drug.Id,
+                Quantity = drug.Quantity,
+                Prices = drug.Prices.ToString(),
+                ImageUrl = drug.ImageUrl,
+                UserId = drug.UserId,
+                Drugs = drug.DrugName
+                            .Where(q => q.IsDeleted == false)
+                            .Select(c => new CategoryViewModel
+                            {
+                                Id = c.Id,
+                                Name = c.Name,
+                                Description = c.Description,
+                            }).ToList(),
+            };
+
+            return response;
         }
 
         public DrugsResponseModel GetDrugsByCategoryId(string categoryId)
         {
-            throw new NotImplementedException();
+            var response = new DrugsResponseModel();
+
+            try
+            {
+                var drugs = _unitOfWork.Drugs.GetDrugByCategoryId(categoryId);
+
+                if (drugs.Count == 0)
+                {
+                    response.Message = "No drug found!";
+                    return response;
+                }
+
+                response.Data = drugs
+                                    .Select(drug => new DrugViewModel
+                                    {
+                                        DrugIds = drug.Id,
+                                        Quantity = drug.Drug.Quantity,
+                                        Prices = drug.Drug.Prices.ToString(),
+                                        ImageUrl = drug.Drug.ImageUrl,
+                                        UserId = drug.Drug.UserId,
+                                        Drugs = drug.Drug.DrugName,
+                                    }).ToList();
+
+                response.Status = true;
+                response.Message = "Success";
+            }
+            catch (Exception ex)
+            {
+                response.Message = $"An error occured: {ex.StackTrace}";
+                return response;
+            }
+
+            return response;
         }
 
-        public BaseResponseModel Update(string drugId, UpdateDrugViewModel updatedrugDto)
+        public BaseResponseModel Update(string drugId, UpdateDrugViewModel request)
         {
-            throw new NotImplementedException();
+            var response = new BaseResponseModel();
+            var modifiedBy = _httpContextAccessor.HttpContext.User.Identity.Name;
+            var questionExist = _unitOfWork.Drugs.Exists(c => c.Id == drugId);
+            var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+            var user = _unitOfWork.Users.Get(userIdClaim);
+
+            if (!questionExist)
+            {
+                response.Message = "Drug does not exist!";
+                return response;
+            }
+
+
+            var drug = _unitOfWork.Drugs.Get(drugId);
+
+            if (drug.UserId != user.Id)
+            {
+                response.Message = "You cannot update this drug";
+                return response;
+            }
+
+            drug.Description = request.Description;
+            drug.ModifiedBy = modifiedBy;
+            drug.DrugName= request.Drug;
+
+            try
+            {
+                _unitOfWork.Drugs.Update(drug);
+                _unitOfWork.SaveChanges();
+                response.Message = "Drug updated successfully!";
+                response.Status = true;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Message = $"Could not update the Drug: {ex.Message}";
+                return response;
+            }
         }
     }
 }

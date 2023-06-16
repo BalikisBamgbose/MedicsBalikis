@@ -12,7 +12,7 @@ namespace Medics.Repository.Implementation
         private bool _disposed = false;
         public IRoleRepository Roles { get; }
         public  IUserRepository Users { get; }
-        public ICategoryRepository Category { get; }
+        public ICategoryRepository Categorys { get; }
         public IAgeRepository Ages { get; }
         public ICategoriesRepository Categories { get; }
         public IDrugRepository Drugs { get; }
@@ -36,7 +36,7 @@ namespace Medics.Repository.Implementation
             _context = context;
             Roles = roleRepository;
             Users = userRepository;
-            Category = categoryRepository;
+            Categorys = categoryRepository;
             Ages = ageRepository;
             Categories = categoriesRepository;
             Drugs = drugRepository;

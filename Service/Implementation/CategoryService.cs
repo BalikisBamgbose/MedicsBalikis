@@ -31,7 +31,7 @@ namespace Medics.Service.Implementation
             var response = new BaseResponseModel();
             var createdBy = _httpContextAccessor.HttpContext.User.Identity.Name;
 
-            var isCategoryExist = _unitOfWork.Category.Exists(c => c.Name == request.Name);
+            var isCategoryExist = _unitOfWork.Categorys.Exists(c => c.Name == request.Name);
 
             if (isCategoryExist)
             {
@@ -54,7 +54,7 @@ namespace Medics.Service.Implementation
 
             try
             {
-                _unitOfWork.Category.Create(category);
+                _unitOfWork.Categorys.Create(category);
                 _unitOfWork.SaveChanges();
                 response.Status = true;
                 response.Message = "Category created successfully.";
@@ -71,7 +71,7 @@ namespace Medics.Service.Implementation
         public BaseResponseModel DeleteCategory(string categoryId)
         {
             var response = new BaseResponseModel();
-            var isCategoryExist = _unitOfWork.Category.Exists(c => c.Id == categoryId && !c.IsDeleted);
+            var isCategoryExist = _unitOfWork.Categorys.Exists(c => c.Id == categoryId && !c.IsDeleted);
 
             if (!isCategoryExist)
             {
@@ -79,12 +79,12 @@ namespace Medics.Service.Implementation
                 return response;
             }
 
-            var category = _unitOfWork.Category.Get(categoryId);
+            var category = _unitOfWork.Categorys.Get(categoryId);
             category.IsDeleted = true;
 
             try
             {
-                _unitOfWork.Category.Update(category);
+                _unitOfWork.Categorys.Update(category);
                 _unitOfWork.SaveChanges();
                 response.Status = true;
                 response.Message = "Category successfully deleted.";
@@ -142,7 +142,7 @@ namespace Medics.Service.Implementation
                                                 && (c.Id == categoryId
                                                 && c.IsDeleted == false);
 
-            var categoryExist = _unitOfWork.Category.Exists(expression);
+            var categoryExist = _unitOfWork.Categorys.Exists(expression);
 
             if (!categoryExist)
             {
@@ -150,7 +150,7 @@ namespace Medics.Service.Implementation
                 return response;
             }
 
-            var category = _unitOfWork.Category.Get(categoryId);
+            var category = _unitOfWork.Categorys.Get(categoryId);
 
             response.Message = "Success";
             response.Status = true;
@@ -168,7 +168,7 @@ namespace Medics.Service.Implementation
         {
             var response = new BaseResponseModel();
             string modifiedBy = _httpContextAccessor.HttpContext.User.Identity.Name;
-            var categoryExist = _unitOfWork.Category.Exists(c => c.Id == categoryId);
+            var categoryExist = _unitOfWork.Categorys.Exists(c => c.Id == categoryId);
 
             if (!categoryExist)
             {
@@ -176,13 +176,13 @@ namespace Medics.Service.Implementation
                 return response;
             }
 
-            var category = _unitOfWork.Category.Get(categoryId);
+            var category = _unitOfWork.Categorys.Get(categoryId);
             category.Description = request.Description;
             category.ModifiedBy = modifiedBy;
 
             try
             {
-                _unitOfWork.Category.Update(category);
+                _unitOfWork.Categorys.Update(category);
                 _unitOfWork.SaveChanges();
                 response.Message = "Category updated successfully.";
 
@@ -197,7 +197,7 @@ namespace Medics.Service.Implementation
 
         public IEnumerable<SelectListItem> SelectCategories()
         {
-            return _unitOfWork.Category.SelectAll().Select(cat => new SelectListItem()
+            return _unitOfWork.Categorys.SelectAll().Select(cat => new SelectListItem()
             {
                 Text = cat.Name,
                 Value = cat.Id

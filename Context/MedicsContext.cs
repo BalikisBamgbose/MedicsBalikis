@@ -45,15 +45,12 @@ namespace Medics.Context
 
             public DbSet<User> Users { get; set; }
             public DbSet<Category> Category { get; set; }
-            public DbSet<Categories> Categories { get; set; }
             public DbSet<Role> Roles { get; set; }
             public DbSet<Category> Age { get; set; }
-            public DbSet<AgeCategories> AgeCategories { get; set; }
             public DbSet<Drug> Drugs { get; set; }
             public DbSet<DrugCategory> DrugCategory { get; set; }
             public DbSet<Incoming> Incomings { get; set; }
-            public DbSet<Outgoing> Outgoing { get; set; }
-            public DbSet<Return> Returns { get; set; }
+            public DbSet<Outgoing> Outgoing { get; set; } 
     
     }
 }

@@ -6,7 +6,7 @@ using Medics.Models.Drug;
 
 namespace Medics.Models.Category
 {
-    public class CategoryViewModel :BaseResponseModel
+    public class CategoryViewModel 
     {
         public string Id { get; set; }
         public string Name { get; set; }

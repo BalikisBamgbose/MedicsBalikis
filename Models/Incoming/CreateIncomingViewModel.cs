@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medics.Models.Incoming
 {
-    public class CreateIncomingResponseModel
+    public class CreateIncomingViewModel
     {
 
         [Required(ErrorMessage = "Enter Supplier Name")]
@@ -18,5 +18,9 @@ namespace Medics.Models.Incoming
         public string ItemName {get; set;}
         public string InvoiceNo {get; set;}
         public string Quantity {get; set;} 
+        public string SupplyDate {get; set;}
+        public string Bill {get; set;}
+
+
     }
 }

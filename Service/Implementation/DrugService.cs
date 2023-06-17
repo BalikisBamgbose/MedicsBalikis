@@ -138,14 +138,14 @@ namespace Medics.Service.Implementation
                         Prices = drug.Prices.ToString(),
                         ImageUrl = drug.ImageUrl,
                         UserId = drug.UserId,
-                        Drugs= drug.DrugName
+                        DrugCategorys= drug.DrugCategorys
                             .Where(c => !c.IsDeleted)
                             .Select(c => new CategoryViewModel
                             {
-                                Id = c.Id,
-                                Name = c.Name,
-                                Description = c.Description,
-                                
+                                Id = c.Category.Id,
+                                Name = c.Category.Name,
+                                Description = c.Category.Description,
+
                             })
                             .ToList()
                     }).ToList();
@@ -189,12 +189,12 @@ namespace Medics.Service.Implementation
                         Prices = drug.Prices.ToString(),
                         ImageUrl = drug.ImageUrl,
                         UserId = drug.UserId,
-                        Drugs = drug.DrugName
+                        DrugCategorys = drug.DrugCategorys
                         .Select(c => new CategoryViewModel
                         {
-                            Id = c.Id,
-                            Name = c.Name,
-                            Description = c.Description,
+                            Id = c.Category.Id,
+                            Name = c.Category.Name,
+                            Description = c.Category.Description,
                         }).ToList(),
                     }).ToList();
 
@@ -244,13 +244,13 @@ namespace Medics.Service.Implementation
                 Prices = drug.Prices.ToString(),
                 ImageUrl = drug.ImageUrl,
                 UserId = drug.UserId,
-                Drugs = drug.DrugName
+                DrugCategorys = drug.DrugCategorys
                             .Where(q => q.IsDeleted == false)
                             .Select(c => new CategoryViewModel
                             {
-                                Id = c.Id,
-                                Name = c.Name,
-                                Description = c.Description,
+                                Id = c.Category.Id,
+                                Name = c.Category.Name,
+                                Description = c.Category.Description,
                             }).ToList(),
             };
 

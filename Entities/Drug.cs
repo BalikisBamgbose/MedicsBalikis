@@ -12,7 +12,6 @@ namespace Medics.Entities
        public string Description { get; set; }
        public string DrugName { get; set; }
        public string AgeId { get; set; }    
-       public Category category { get; set; }
        public ICollection<DrugCategory> DrugCategorys { get; set; } = new HashSet<DrugCategory>();
        public decimal Prices{ get; set; }
        public string Quantity { get; set; }

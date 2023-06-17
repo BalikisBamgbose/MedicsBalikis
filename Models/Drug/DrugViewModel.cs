@@ -15,6 +15,6 @@ namespace Medics.Models.Drug
         public string Quantity { get; set; }
         public string ImageUrl { get; set; }
         public string IsClosed { get; set; }
-        public List<CategoryViewModel> Category { get; set; }
+        public List<CategoryViewModel> DrugCategorys { get; set; }
     }
 }

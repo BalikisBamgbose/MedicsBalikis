@@ -1,8 +1,28 @@
-﻿@{
+﻿@using System.Security.Claims;
+@model List<Medics.Models.Drug.DrugViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@await Html.PartialAsync("_ListAlert", Model)
+
+@if (Model is not null)
+{
+    @foreach (var drug in Model)
+    {
+        <h4>@drug.Drugs</h4>
+
+        <div>
+             <button type="button" class="btn btn-warning btn-sm">
+                  By @drug.UserId
+             </button>
+            @if (drug.UserId != User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value || User.IsInRole("Admin"))
+            {
+             <a asp-controller="Drug" asp-action="Create" asp-route-id="@drug.DrugIds" class="btn btn-success btn-sm">
+                  View Drug
+             </a>
+            }
+        </div>
+    }
+}

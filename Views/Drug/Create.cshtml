@@ -1,0 +1,38 @@
+﻿@model Medics.Models.Drug.CreateDrugViewModel
+
+@{
+    ViewData["Title"] = "Create Drug";
+}
+
+@section Styles {
+    @{
+        await Html.RenderPartialAsync("_Select2CssPartial");
+    }
+}
+
+<div class="body">
+
+     <div class="row">
+          <div class="col-md-6">
+               <form asp-action="Create">
+                    <div class="col-md-12 mb-2">
+                         <label class="form-label">Categories:</label>
+                         <select asp-for="CategoryIds" class="form-control" asp-items="@ViewBag.Categorys" data-placeholder="Select Categories" multiple>
+                         </select>
+                         <span asp-validation-for="CategoryIds" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+                         <label class="form-label">Drug:</label>
+                         <textarea class="form-control" placeholder="Enter Drug" asp-for="DrugName"></textarea>
+                         <span asp-validation-for="DrugName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-12">
+                         <button type="submit" class="btn btn-primary">Create Drug</button>
+                    </div>
+               </form>
+          </div>
+     </div>
+</div>
+

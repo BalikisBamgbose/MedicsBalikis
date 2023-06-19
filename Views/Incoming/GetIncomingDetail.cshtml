@@ -1,0 +1,50 @@
+﻿@model Medics.Models.Incoming.IncomingViewModel
+
+@{
+    ViewData["Title"] = "Incoming Detail";
+}
+
+<div class="body">
+
+    @if (Model is not null)
+    {
+         <div class="card">
+
+              <div class="card-header">
+
+                   <h5>
+                    @Model.ItemName
+                   </h5>
+
+                   <div>
+                        <a asp-controller="Incoming" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary btn-sm">
+                             <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form asp-controller="Incoming" asp-action="DeleteIncoming" asp-route-id="@Model.Id" method="post" class="del-btn">
+                             <button type="submit" class="btn btn-danger btn-sm">
+                                  <i class="fas fa-trash"></i>
+                             </button>
+                        </form>
+                   </div>
+              </div>
+
+              <div class="card-body">
+
+
+                   <div>
+                        <a asp-controller="Incoming" asp-action="Index" class="btn btn-secondary">
+                             Back to list
+                        </a>
+                   </div>
+
+              </div>
+         </div>
+    }
+</div>
+
+
+
+
+
+

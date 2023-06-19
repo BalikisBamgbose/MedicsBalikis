@@ -15,6 +15,8 @@ namespace Medics.Service.Interface
         BaseResponseModel DeleteOutgoing(string outgoingId);
         BaseResponseModel UpdateOutgoing(string outgoingId, UpdateOutgoingViewModel OutgoingDto);
         OutgoingResponseModel GetOutgoing(string outgoingId);
+        OutgoingsResponseModel GetAllOutgoing();
+
         IEnumerable<SelectListItem> SelectOutgoings();
     }
 }

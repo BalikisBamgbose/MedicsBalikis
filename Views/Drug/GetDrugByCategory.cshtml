@@ -1,0 +1,41 @@
+﻿@model List<Medics.Models.Drug.DrugViewModel>
+
+@{
+    ViewData["Title"] = "Drug List";
+    int count = 1;
+}
+
+@await Html.PartialAsync("_ListAlert", Model)
+
+@if (Model is not null)
+{
+    <table class="table">
+         <thead>
+              <tr>
+                   <th scope="col">#</th>
+                   <th scope="col">Username</th>
+                   <th scope="col">Drug</th>
+                   <th scope="col">Action</th>
+              </tr>
+         </thead>
+
+         <tbody>
+            @foreach (var item in Model)
+            {
+                  <tr>
+                       <td scope="row">@count</td>
+                       <td scope="row">@item.Drugs</td>
+                       <td scope="row">@item.Prices</td>
+                       <td scope="row">@item.Quantity</td>
+                       <td scope="row">@item.DrugIds</td>
+
+
+                       <td scope="row">
+                      
+                       </td>
+                  </tr>
+                count++;
+            }
+         </tbody>
+    </table>
+}

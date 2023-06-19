@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Reflection;
-using System.Threading.Tasks;
 using Medics.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,7 +43,6 @@ namespace Medics.Context
             public DbSet<User> Users { get; set; }
             public DbSet<Category> Category { get; set; }
             public DbSet<Role> Roles { get; set; }
-            public DbSet<Category> Age { get; set; }
             public DbSet<Drug> Drugs { get; set; }
             public DbSet<DrugCategory> DrugCategory { get; set; }
             public DbSet<Incoming> Incomings { get; set; }

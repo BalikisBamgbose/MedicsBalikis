@@ -8,7 +8,7 @@ namespace Medics.Models.Incoming
 {
     public class UpdateIncomingViewModel
     {
-        public int Id {get; set;}
+        public string Id {get; set;}
 
         [Required(ErrorMessage = "Enter Supplier Name")]
         public string SupplierName {get; set;}

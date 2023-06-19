@@ -61,7 +61,7 @@ namespace Medics.Service.Implementation
             {
                 _unitOfWork.Users.Create(user);
                 _unitOfWork.SaveChanges();
-                response.Message = $"You have succesfully signed up on IdealDiscuss";
+                response.Message = $"You have succesfully signed up on Medics";
                 response.Status = true;
 
                 return response;

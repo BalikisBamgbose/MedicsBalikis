@@ -14,6 +14,7 @@ namespace Medics.Service.Interface
         BaseResponseModel DeleteIncoming(string incomingId);
         BaseResponseModel UpdateIncoming(string incomingId, UpdateIncomingViewModel IncomingDto);
         IncomingResponseModel GetIncoming(string incomingId);
+        IncomingsResponseModel GetAllIncoming();
         IEnumerable<SelectListItem> SelectIncomings();
     }
 }

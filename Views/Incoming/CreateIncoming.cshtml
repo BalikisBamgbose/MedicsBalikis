@@ -1,0 +1,53 @@
+﻿@model Medics.Models.Incoming.CreateIncomingViewModel
+@{
+	ViewData["Title"] = "Create Incoming";
+}
+<div class="body">
+	 <div class="row">
+		  <div class="col-md-6">
+			   <form asp-action="CreateIncoming">
+					<div class="col-md-12 mb-3">
+						 <label asp-for="Drugs" class="control-label"></label>
+						 <textarea asp-for="Drugs" type="text" class="form-control"></textarea>
+						 <span asp-validation-for="Drugs" class="text-danger"></span>
+					</div>
+					<div class="col-md-12 mb-3">
+						 <label asp-for="SupplierName" class="control-label"></label>
+						 <textarea asp-for="SupplierName" type="text" class="form-control"></textarea>
+						 <span asp-validation-for="SupplierName" class="text-danger"></span>
+					</div>
+					<div class="col-md-12 mb-3">
+						 <label asp-for="Quantity" class="control-label"></label>
+						 <textarea asp-for="Quantity" type="text" class="form-control"></textarea>
+						 <span asp-validation-for="Quantity" class="text-danger"></span>
+					</div>
+
+					<div class="col-md-12 mb-3">
+						 <label asp-for="ItemName" class="control-label"></label>
+						 <input asp-for="ItemName" type="file" class="form-control" />
+						 <span asp-validation-for="ItemName" class="text-danger"></span>
+					</div>
+					<div class="col-md-12 mb-3">
+						 <label asp-for="InvoiceNo" class="control-label"></label>
+						 <input asp-for="InvoiceNo" type="file" class="form-control" />
+						 <span asp-validation-for="InvoiceNo" class="text-danger"></span>
+					</div>
+					<div class="col-md-12 mb-3">
+						 <label asp-for="Quantity" class="control-label"></label>
+						 <input asp-for="Quantity" type="file" class="form-control" />
+						 <span asp-validation-for="Quantity" class="text-danger"></span>
+					</div>
+					<div class="col-md-12 mb-3">
+						 <label asp-for="Bill" class="control-label"></label>
+						 <input asp-for="Bill" type="file" class="form-control" />
+						 <span asp-validation-for="Bill" class="text-danger"></span>
+					</div>
+
+					<div class="col-md-12">
+						 <button type="submit" class="btn btn-primary">Modify</button>
+					</div>
+			   </form>
+		  </div>
+	 </div>
+</div>
+

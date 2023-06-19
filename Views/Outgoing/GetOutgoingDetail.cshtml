@@ -1,5 +1,4 @@
 ﻿@model Medics.Models.Outgoing.OutgoingViewModel
-
 @{
     ViewData["Title"] = "Outgoing Detail";
 }
@@ -8,43 +7,42 @@
 
     @if (Model is not null)
     {
-         <div class="card">
+         <dl class="row">
+              <dt class="col-sm-4">
+                   Outgoing Detail:
+              </dt>
 
-              <div class="card-header">
+              <dd class="col-sm-8">
+                @Model.Name
+              </dd>
 
-                   <h5>
-                    @Model.Item
-                   </h5>
+              <dt class="col-sm-4">
+                   ItemName:
+              </dt>
 
-                   <div>
-                        <a asp-controller="Outgoing" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary btn-sm">
-                             <i class="fas fa-edit"></i>
-                        </a>
-
-                        <form asp-controller="Outgoing" asp-action="DeleteOutgoing" asp-route-id="@Model.Id" method="post" class="del-btn">
-                             <button type="submit" class="btn btn-danger btn-sm">
-                                  <i class="fas fa-trash"></i>
-                             </button>
-                        </form>
-                   </div>
-              </div>
-
-              <div class="card-body">
-
-
-                   <div>
-                        <a asp-controller="Outgoing" asp-action="Index" class="btn btn-secondary">
-                             Back to list
-                        </a>
-                   </div>
-
-              </div>
+              <dd class="col-sm-8">
+                @Model.Purpose
+              </dd>
+              <dd class="col-sm-8">
+                @Model.Quantity
+              </dd>
+              <dd class="col-sm-8">
+                @Model.DeliveredTo
+              </dd>
+              <dd class="col-sm-8">
+                @Model.Sale
+              </dd>
+              
+         </dl>
+         <br />
+         <div class="btn-group">
+              <a asp-controller="Outgoing" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-success">Update</a>
+              &nbsp;
+              <form asp-action="DeleteOutgoing" asp-route-id="@Model.Id">
+                   <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+              &nbsp;
+              <a asp-controller="Outgoing" asp-action="Index" class="btn btn-outline-secondary">Go back to list</a>
          </div>
     }
 </div>
-
-
-
-
-
-

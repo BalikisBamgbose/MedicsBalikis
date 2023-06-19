@@ -43,7 +43,6 @@ namespace Medics.Repository.Implementation
         public List<Drug> GetDrugs()
         {
             var drugs = _context.Drugs
-                .Include(c => c.Description)
                 .Include(qr => qr.DrugCategorys)
                 .ToList();
 

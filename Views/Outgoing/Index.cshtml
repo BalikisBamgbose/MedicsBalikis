@@ -1,12 +1,12 @@
 ﻿@model List<Medics.Models.Outgoing.OutgoingViewModel>
-
 @{
-    ViewData["Title"] = "Outgoing List";
+    ViewData["Title"] = "Outgoing Drug List";
     int count = 1;
 }
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+
+<div>
+     <a asp-controller="Outgoing" asp-action="CreateOutgoing" class="btn btn-outline-primary">Add New Outgoing Item</a>
+</div>
 
 @await Html.PartialAsync("_ListAlert", Model)
 
@@ -15,38 +15,32 @@
     <table class="table">
          <thead>
               <tr>
-                   <th scope="col">#</th>
-                @if (User.IsInRole("Admin"))
-                {
-                       <th scope="col">Username</th>
-                }
-                   <th scope="col">Incoming</th>
+                   <th scope="col">S/N</th>
+                   <th scope="col">Item</th>     
+                   <th scope="col">Name</th>
+                   <th scope="col">DeliveredTo</th>
+                   <th scope="col">Quantity</th>
+                   <th scope="col">Purpose</th>
+                   <th scope="col">Sale</th>
                    <th scope="col">Action</th>
+                   <th scope="col"></th>
+
               </tr>
          </thead>
-
          <tbody>
             @foreach (var item in Model)
             {
                   <tr>
                        <td scope="row">@count</td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                           <td scope="row">@item.Item</td>
-                           <td scope="row">@item.Name</td>
-
-                    }
-                       <td scope="row">@item.Name</td>
-                       <td scope="row">@item.DeliveredTo</td>
-                       <td scope="row">@item.Purpose</td>
-                       <td scope="row">@item.Quantity</td>
-                       <td scope="row">@item.Sale</td>
-
-                       <td scope="row">
-                        @item.Quantity
+                       <td>@item.Item</td>
+                       <td>@item.Name</td>
+                       <td>@item.DeliveredTo</td>
+                       <td>@item.Quantity</td>
+                       <td>@item.Purpose</td>
+                       <td>@item.Sale</td>
+                       <td>
                             <div class="btn-group">
-                                 <a asp-controller="Outgoing" asp-action="GetOutgoingDetail" asp-route-id="@item.Id" class="btn btn-info btn-sm text-white">View Outgoing Drug</a>
-
+                                 <a asp-controller="Outgoing" asp-action="GetOutgoingDetail" asp-route-id="@item.Id" class="btn btn-primary">View Outgoing Items</a>
                             </div>
                        </td>
                   </tr>

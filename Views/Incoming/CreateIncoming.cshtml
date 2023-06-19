@@ -1,53 +1,38 @@
-﻿@model Medics.Models.Incoming.CreateIncomingViewModel
-@{
-	ViewData["Title"] = "Create Incoming";
+﻿@{
+    ViewData["Title"] = "Create New Incoming List";
 }
+
 <div class="body">
-	 <div class="row">
-		  <div class="col-md-6">
-			   <form asp-action="CreateIncoming">
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Drugs" class="control-label"></label>
-						 <textarea asp-for="Drugs" type="text" class="form-control"></textarea>
-						 <span asp-validation-for="Drugs" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="SupplierName" class="control-label"></label>
-						 <textarea asp-for="SupplierName" type="text" class="form-control"></textarea>
-						 <span asp-validation-for="SupplierName" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Quantity" class="control-label"></label>
-						 <textarea asp-for="Quantity" type="text" class="form-control"></textarea>
-						 <span asp-validation-for="Quantity" class="text-danger"></span>
-					</div>
 
-					<div class="col-md-12 mb-3">
-						 <label asp-for="ItemName" class="control-label"></label>
-						 <input asp-for="ItemName" type="file" class="form-control" />
-						 <span asp-validation-for="ItemName" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="InvoiceNo" class="control-label"></label>
-						 <input asp-for="InvoiceNo" type="file" class="form-control" />
-						 <span asp-validation-for="InvoiceNo" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Quantity" class="control-label"></label>
-						 <input asp-for="Quantity" type="file" class="form-control" />
-						 <span asp-validation-for="Quantity" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Bill" class="control-label"></label>
-						 <input asp-for="Bill" type="file" class="form-control" />
-						 <span asp-validation-for="Bill" class="text-danger"></span>
-					</div>
+     <div class="row">
+          <div class="col-md-6">
+               <form asp-action="CreateIncoming">
+                    <div class="col-md-12 mb-2">
+                         <label for="Name" class="form-label">SupplierName:</label>
+                         <input type="text" class="form-control" placeholder="Enter Incoming Item" name="SupplyName">
+                    </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="ItemName" class="form-label">ItemName:</label>
+                         <input type="text" class="form-control" placeholder="Enter Item Name" name="ItemName">
+                    </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="InvoiceNo" class="form-label">InvoiceNo:</label>
+                         <input type="text" class="form-control" placeholder="Enter Incoming Item InvoiceNo" name="InvoiceNo">
+                    </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="SupplyDate" class="form-label">SupplyDate:</label>
+                         <input type="text" class="form-control" placeholder="Enter Incoming Item SupplyDate" name="SupplyDate">
+                    </div>
 
-					<div class="col-md-12">
-						 <button type="submit" class="btn btn-primary">Modify</button>
-					</div>
-			   </form>
-		  </div>
-	 </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="Quantity" class="form-label">Quantity:</label>
+                         <textarea class="form-control" placeholder="Enter Quantity" name="Quantity"></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                         <button type="submit" class="btn btn-primary">Create Incoming</button>
+                    </div>
+               </form>
+          </div>
+     </div>
 </div>
-

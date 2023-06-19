@@ -1,48 +1,42 @@
-﻿@model Medics.Models.Outgoing.CreateOutgoingViewModel
-@{
-	ViewData["Title"] = "Create Incoming";
+﻿@{
+    ViewData["Title"] = "Create New Outgoing List";
 }
+
 <div class="body">
-	 <div class="row">
-		  <div class="col-md-6">
-			   <form asp-action="CreateIncoming">
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Item" class="control-label"></label>
-						 <textarea asp-for="Item" type="text" class="form-control"></textarea>
-						 <span asp-validation-for="Item" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Name" class="control-label"></label>
-						 <textarea asp-for="Name" type="text" class="form-control"></textarea>
-						 <span asp-validation-for="Name" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Quantity" class="control-label"></label>
-						 <textarea asp-for="Quantity" type="text" class="form-control"></textarea>
-						 <span asp-validation-for="Quantity" class="text-danger"></span>
-					</div>
 
-					<div class="col-md-12 mb-3">
-						 <label asp-for="DeliveredTo" class="control-label"></label>
-						 <input asp-for="DeliveredTo" type="file" class="form-control" />
-						 <span asp-validation-for="DeliveredTo" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Purpose" class="control-label"></label>
-						 <input asp-for="Purpose" type="file" class="form-control" />
-						 <span asp-validation-for="Purpose" class="text-danger"></span>
-					</div>
-					<div class="col-md-12 mb-3">
-						 <label asp-for="Sale" class="control-label"></label>
-						 <input asp-for="Sale" type="file" class="form-control" />
-						 <span asp-validation-for="Sale" class="text-danger"></span>
-					</div>
+     <div class="row">
+          <div class="col-md-6">
+               <form asp-action="CreateOutgoing">
+                    <div class="col-md-12 mb-2">
+                         <label for="Name" class="form-label">Name:</label>
+                         <input type="text" class="form-control" placeholder="Enter Outgoing Item" name="Name">
+                    </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="Item" class="form-label">Item:</label>
+                         <input type="text" class="form-control" placeholder="Enter Item" name="Item">
+                    </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="DeliveredTo" class="form-label">DeliveredTo:</label>
+                         <input type="text" class="form-control" placeholder=" DeliveredTo" name="DeliveredTo">
+                    </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="Purpose" class="form-label">Purpose:</label>
+                         <input type="text" class="form-control" placeholder="Enter Outgoing Item Purpose" name="Purpose">
+                    </div>
 
-					<div class="col-md-12">
-						 <button type="submit" class="btn btn-primary">Modify</button>
-					</div>
-			   </form>
-		  </div>
-	 </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="Quantity" class="form-label">Quantity:</label>
+                         <textarea class="form-control" placeholder="Enter Quantity" name="Quantity"></textarea>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                         <label for="Sale" class="form-label">Sale:</label>
+                         <textarea class="form-control" placeholder="Enter Sale" name="Sale"></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                         <button type="submit" class="btn btn-primary">Create Outgoing</button>
+                    </div>
+               </form>
+          </div>
+     </div>
 </div>
-

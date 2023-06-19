@@ -1,9 +1,12 @@
 ﻿@model List<Medics.Models.Incoming.IncomingViewModel>
-
 @{
-    ViewData["Title"] = "Incoming List";
+    ViewData["Title"] = "Incoming Drug List";
     int count = 1;
 }
+
+<div>
+     <a asp-controller="Incoming" asp-action="CreateIncoming" class="btn btn-outline-primary">Add New Incoming Item</a>
+</div>
 
 @await Html.PartialAsync("_ListAlert", Model)
 
@@ -12,31 +15,28 @@
     <table class="table">
          <thead>
               <tr>
-                   <th scope="col">#</th>
-                @if (User.IsInRole("Admin"))
-                {
-                       <th scope="col">Username</th>
-                }
-                   <th scope="col">Incoming</th>
+                   <th scope="col">S/N</th>
+                   <th scope="col">SuppplierName</th>
+                   <th scope="col">SupplyDate</th>
+                   <th scope="col">ItemName</th>
+                   <th scope="col">InvoiceNo</th>
+                   <th scope="col">Quantity</th>
                    <th scope="col">Action</th>
+
               </tr>
          </thead>
-
          <tbody>
             @foreach (var item in Model)
             {
                   <tr>
                        <td scope="row">@count</td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                           <td scope="row">@item.ItemName</td>
-                    }
-                       <td scope="row">@item.SupplierName</td>
-                       <td scope="row">
-                        @item.Quantity
+                       <td>@item.SupplierName</td>
+                       <td>@item.SupplyDate</td>
+                       <td>@item.ItemName</td>
+                       <td>@item.InvoiceNo</td>
+                       <td>
                             <div class="btn-group">
-                                 <a asp-controller="Incoming" asp-action="GetIncomingDetail" asp-route-id="@item.Id" class="btn btn-info btn-sm text-white">View Drug</a>
-
+                                 <a asp-controller="Incoming" asp-action="GetIncomingDetail" asp-route-id="@item.Id" class="btn btn-primary">View Incoming Items</a>
                             </div>
                        </td>
                   </tr>

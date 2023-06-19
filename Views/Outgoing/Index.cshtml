@@ -4,6 +4,9 @@
     ViewData["Title"] = "Outgoing List";
     int count = 1;
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 @await Html.PartialAsync("_ListAlert", Model)
 

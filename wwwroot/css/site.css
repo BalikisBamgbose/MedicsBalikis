@@ -12,7 +12,20 @@ html {
   position: relative;
   min-height: 100%;
 }
-
+.header {
+     padding: 60px;
+     text-align: center;
+     background-color:lightpink ;
+     color: gold;
+     font-size: 30px;
+}
 body {
-  margin-bottom: 60px;
+     margin-bottom: 60px;
+     background-color: lightcoral;
+     border-color: black;
+}
+footer {
+     margin-bottom: 60px;
+     background-color: purple;
+     border-color: black;
 }

@@ -23,7 +23,6 @@ namespace Medics.Repository.Implementation
                  .Include(c => c.User)  
                  .Include(u => u.DrugCategorys)
                  .Include(qr => qr.Prices)
-                 .Include(d=>d.Description)
                  .SingleOrDefault(expression);
 
             return drug;
@@ -56,7 +55,6 @@ namespace Medics.Repository.Implementation
             var drugs = _context.Drugs
                .Where(expression)
                .Include(u => u.User)
-               .Include(c => c.Description)
                .Include(qr => qr.Prices)
                .ToList();
 

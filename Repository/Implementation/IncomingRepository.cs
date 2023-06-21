@@ -24,10 +24,7 @@ namespace Medics.Repository.Implementation
                 .Include(q => q.Quantity)
                 .Include(i => i.InvoiceNo)
                 .Include(sd => sd.SupplyDate)
-                .Include(bv => bv.BillValue)
                 .Include(b => b.Bill)
-                .Include(dd => dd.DeliveryDate)
-                .Include(rn => rn.ReceiptNo)
                 .Where(i => i.Id.Equals(incomingId))
                 .FirstOrDefault();
 
@@ -42,11 +39,8 @@ namespace Medics.Repository.Implementation
                         .Include(c => c.ItemName)
                         .Include(q => q.Quantity)
                         .Include(i => i.InvoiceNo)
-                        .Include(sd => sd.SupplyDate)
-                        .Include(bv => bv.BillValue)
+                        .Include(sd => sd.SupplyDate)            
                         .Include(b => b.Bill)
-                        .Include(dd => dd.DeliveryDate)
-                        .Include(rn => rn.ReceiptNo)
                        .ToList();
 
             return incomings;

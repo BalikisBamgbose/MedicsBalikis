@@ -20,7 +20,7 @@ namespace Medics.Context.EntityConfiguration
                    .HasForeignKey(q => q.UserId)
                    .IsRequired();
 
-            builder.Property(d => d.Description)
+          builder.Property(d => d.Description)
                 .IsRequired()
                 .HasMaxLength(50);
 

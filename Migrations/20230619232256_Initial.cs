@@ -156,7 +156,6 @@ namespace Medics.Migrations
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false),
                     Description = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     DrugName = table.Column<string>(type: "longtext", nullable: true),
-                    AgeId = table.Column<string>(type: "longtext", nullable: true),
                     Prices = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Quantity = table.Column<string>(type: "varchar(255)", nullable: true),
                     ImageUrl = table.Column<string>(type: "varchar(255)", nullable: true),

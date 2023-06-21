@@ -70,9 +70,6 @@ namespace Medics.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("AgeId")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
 

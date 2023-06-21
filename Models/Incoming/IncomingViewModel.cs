@@ -14,6 +14,7 @@ namespace Medics.Models.Incoming
         public string InvoiceNo {get; set;}
         public string Quantity {get; set;}
         public string SupplyDate { get; set;}
+        public string Bill { get; set;}
         public List<DrugViewModel> Drugs { get; set; }
     }
 }

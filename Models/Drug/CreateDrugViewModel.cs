@@ -15,8 +15,9 @@ namespace Medics.Models.Drug
         [MinLength(3, ErrorMessage = "The minimum lenghh is 3")]
         [MaxLength(150, ErrorMessage = "The Maximum length is 150")]
         public string DrugName { get; set; }
+        public string Description { get; set; }
 
-        [Required(ErrorMessage = "Enter price")]
+        //[Required(ErrorMessage = "Enter price")]
         public string Prices{ get; set; }
         public string Quantity { get; set; }
         public string ImageUrl { get; set; }

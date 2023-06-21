@@ -37,8 +37,11 @@ namespace Medics.Service.Implementation
             {
                 UserId = user.Id,
                 DrugName = request.DrugName,
+                Quantity = request.Quantity,
+                Prices = request.Prices,
+                Description= request.Description,
                 ImageUrl = request.ImageUrl,
-                CreatedBy = createdBy,
+               
             };
 
             var category = _unitOfWork.Categorys.GetAllByIds(request.CategoryIds);

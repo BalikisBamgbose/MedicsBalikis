@@ -9,8 +9,15 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+     position: relative;
+     min-height: 100%;
+     scroll-behavior: auto;
+     z-index: 100;
+}
+.head {
+     padding: 60px;
+     background-color: mediumpurple;
+   
 }
 .header {
      padding: 60px;
@@ -25,7 +32,7 @@ body {
      border-color: black;
 }
 footer {
-     margin-bottom: 60px;
      background-color: purple;
      border-color: black;
 }
+

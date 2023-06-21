@@ -11,10 +11,10 @@ namespace Medics.Models.Drug
         public string UserId { get; set; }
         public string DrugIds { get; set; }
         public string Drugs { get; set; }
+        public string Description{ get; set; }
         public string Prices{ get; set; }
         public string Quantity { get; set; }
-        public string ImageUrl { get; set; }
-        public string IsClosed { get; set; }
+        public string? ImageUrl { get; set; }
         public List<CategoryViewModel> DrugCategorys { get; set; }
     }
 }

@@ -188,9 +188,9 @@ namespace Medics.Service.Implementation
                     .Select(drug => new DrugViewModel
                     {
                         DrugIds = drug.Id,
-                        Quantity = drug.Quantity,
-                        Prices = drug.Prices.ToString(),
-                        ImageUrl = drug.ImageUrl,
+                        //Quantity = drug.Quantity,
+                        Drugs = drug.DrugName,
+                        Description = drug.Description,
                         UserId = drug.UserId,
                         DrugCategorys = drug.DrugCategorys
                         .Select(c => new CategoryViewModel

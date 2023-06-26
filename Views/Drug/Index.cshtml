@@ -17,11 +17,11 @@
          <thead>
               <tr>
                    <th scope="col">#</th>
-                @if (User.IsInRole("Admin"))
-                {
-                       <th scope="col">Username</th>
-                }
-                   <th scope="col">Drug</th>
+               @* @if (User.IsInRole("Admin"))*@
+                
+                   <th scope="col">DrugName</th>
+                
+                   <th scope="col">Description</th>
                    <th scope="col">Action</th>
               </tr>
          </thead>
@@ -35,7 +35,7 @@
                     {
                            <td scope="row">@item.Drugs</td>
                     }
-                       <td scope="row">@item.Prices</td>
+                       <td scope="row">@item.Description</td>
                        <td scope="row">@item.Quantity
                             <div class="btn-group">
                                  <a asp-controller="Drug" asp-action="GetDrugDetail" asp-route-id="@item.DrugIds" class="btn btn-info btn-sm text-white">View Drug</a>

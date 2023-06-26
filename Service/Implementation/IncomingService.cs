@@ -92,15 +92,17 @@ namespace Medics.Service.Implementation
                 response.Message = "Incoming delete failed";
                 return response;
             }
+           
         }
 
-        public IncomingsResponseModel GetAllIncoming()
+        public IncomingsResponseModel GetAllIncomings()
         {
             var response = new IncomingsResponseModel();
 
             try
             {
-                var incomings = _unitOfWork.Incomings.GetAll(i => i.IsDeleted == false);
+                Expression<Func<Incoming, bool>> expression = c => c.IsDeleted == false;
+                var incomings = _unitOfWork.Incomings.GetAll(expression);
 
                 if (incomings is null || incomings.Count == 0)
                 {
@@ -113,19 +115,23 @@ namespace Medics.Service.Implementation
                    {
                        Id = i.Id,
                        ItemName = i.ItemName,
+                       InvoiceNo= i.InvoiceNo,
                        SupplierName = i.SupplierName,
+                       Quantity= i.Quantity,
+                       Bill= i.Bill,
                        SupplyDate = i.SupplyDate
                    }).ToList();
-
-                response.Status = true;
-                response.Message = "Success";
+                
             }
             catch (Exception ex)
             {
                 response.Message = ex.StackTrace;
                 return response;
+                
             }
 
+            response.Status = true;
+            response.Message = "Success";
             return response;
         }
 

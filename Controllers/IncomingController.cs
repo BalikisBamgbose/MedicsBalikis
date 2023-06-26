@@ -20,7 +20,7 @@ namespace Medics.Controllers
         }
         public IActionResult Index()
         {
-            var response = _incomingService.GetAllIncoming();
+            var response = _incomingService.GetAllIncomings();
 
             ViewData["Message"] = response.Message;
             ViewData["Status"] = response.Status;

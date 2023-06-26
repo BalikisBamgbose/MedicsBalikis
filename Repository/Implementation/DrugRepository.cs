@@ -20,10 +20,9 @@ namespace Medics.Repository.Implementation
         public Drug GetDrug(Expression<Func<Drug, bool>> expression)
         {
             var drug = _context.Drugs
+                 .Include(d=>d.Id)
                  .Include(c => c.User)  
                  .Include(u => u.DrugCategorys)
-                 .Include(c => c.Description)
-                 .Include(qr => qr.Prices)
                  .SingleOrDefault(expression);
 
             return drug;
@@ -44,11 +43,10 @@ namespace Medics.Repository.Implementation
         public List<Drug> GetDrugs()
         {
             var drugs = _context.Drugs
-                .Include(qr => qr.DrugCategorys)
-                .Include(u => u.User)
-                .Include(c => c.Description)
-                .Include(c => c.Quantity)
-                .Include(qr => qr.Prices)
+                //.Include(qr => qr.DrugCategorys)    
+                //.Include(u => u.User)
+                .Include(qr=>qr.DrugCategorys)
+                .ThenInclude(qr => qr.Category)
                 .ToList();
 
             return drugs;
@@ -59,9 +57,9 @@ namespace Medics.Repository.Implementation
             var drugs = _context.Drugs
                .Where(expression)
                .Include(u => u.User)
-               .Include(c => c.Description)
-               .Include(c=>c.Quantity)
-               .Include(qr => qr.Prices)
+               //.Include(c => c.Description)
+               //.Include(c => c.Quantity)
+               //.Include(qr => qr.Prices)
                .ToList();
 
             return drugs;

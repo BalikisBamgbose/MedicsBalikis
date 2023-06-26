@@ -16,17 +16,16 @@ namespace Medics.Context.EntityConfiguration
             builder.HasKey(x => x.Id);
 
             builder.HasOne(u => u.User)
-                   .WithMany(d=>d.Drug)
-                   .HasForeignKey(q => q.UserId)
-                   .IsRequired();
+                   .WithMany(d => d.Drug)
+                   .HasForeignKey(q => q.UserId);
+                  
 
           builder.Property(d => d.Description)
-                .IsRequired()
                 .HasMaxLength(50);
 
             builder.HasMany(a => a.DrugCategorys)
-                 .WithOne(a => a.Drug)
-                 .IsRequired();
+                 .WithOne(a => a.Drug);
+                 
 
             builder.HasIndex(d => d.Prices);
 

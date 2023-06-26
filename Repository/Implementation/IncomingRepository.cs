@@ -39,7 +39,7 @@ namespace Medics.Repository.Implementation
                         .Include(c => c.ItemName)
                         .Include(q => q.Quantity)
                         .Include(i => i.InvoiceNo)
-                        .Include(sd => sd.SupplyDate)            
+                        .Include(sd => sd.SupplyDate)
                         .Include(b => b.Bill)
                        .ToList();
 

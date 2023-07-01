@@ -20,7 +20,7 @@
 
         <div>
              <button type="button" class="btn btn-warning btn-sm">
-                  By @drug.UserId
+                  @drug.Drugs
              </button>
             @if (drug.UserId != User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value || User.IsInRole("Admin"))
             {

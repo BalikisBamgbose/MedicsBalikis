@@ -31,7 +31,7 @@ public class HomeController : Controller
     [Authorize]
     public IActionResult Index()
     {
-        var drugs = _drugService.DisplayDrug();
+        var drugs = _drugService.GetAllDrugs();
         ViewData["Message"] = drugs.Message;
         ViewData["Status"] = drugs.Status;
 

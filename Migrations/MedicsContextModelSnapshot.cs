@@ -80,7 +80,6 @@ namespace Medics.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
@@ -108,14 +107,13 @@ namespace Medics.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("longtext");
 
-                    b.Property<decimal>("Prices")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Prices")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Quantity")
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
@@ -182,9 +180,6 @@ namespace Medics.Migrations
                     b.Property<string>("Bill")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("BillValue")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
 
@@ -193,9 +188,6 @@ namespace Medics.Migrations
 
                     b.Property<DateTime>("DatePurchased")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("DeliveryDate")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("ExpDate")
                         .HasColumnType("longtext");
@@ -224,9 +216,6 @@ namespace Medics.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
-
-                    b.Property<string>("ReceiptNo")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("SupplierName")
                         .IsRequired()
@@ -430,9 +419,7 @@ namespace Medics.Migrations
                 {
                     b.HasOne("Medics.Entities.User", "User")
                         .WithMany("Drug")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });

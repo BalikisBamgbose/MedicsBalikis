@@ -12,7 +12,7 @@ namespace Medics.Entities
        public string Description { get; set; }
        public string DrugName { get; set; } 
        public ICollection<DrugCategory> DrugCategorys { get; set; } = new HashSet<DrugCategory>();
-       public string Prices{ get; set; }
+       public string?  Prices{ get; set; }
        public string Quantity { get; set; }
        public string? ImageUrl { get; set; }
        public bool IsClosed { get; set; }

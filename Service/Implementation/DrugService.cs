@@ -4,13 +4,8 @@ using Medics.Models.Category;
 using Medics.Models.Drug;
 using Medics.Repository.Interface;
 using Medics.Service.Interface;
-using Org.BouncyCastle.Asn1.Ocsp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Medics.Service.Implementation
 {

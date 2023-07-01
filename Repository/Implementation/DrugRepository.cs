@@ -20,7 +20,6 @@ namespace Medics.Repository.Implementation
         public Drug GetDrug(Expression<Func<Drug, bool>> expression)
         {
             var drug = _context.Drugs
-                 .Include(d=>d.Id)
                  .Include(c => c.User)  
                  .Include(u => u.DrugCategorys)
                  .SingleOrDefault(expression);

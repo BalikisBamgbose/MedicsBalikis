@@ -208,22 +208,22 @@ namespace Medics.Service.Implementation
             return response;
         }
 
-        public DrugResponseModel GetDrug(string drugId)
+        public DrugResponseModel GetDrug(string DrugIds)
         {
             var response = new DrugResponseModel();
-            var drugExist = _unitOfWork.Drugs.Exists(q => q.Id == drugId && q.IsDeleted == false);
+            var drugExist = _unitOfWork.Drugs.Exists(q => q.Id == DrugIds && q.IsDeleted == false);
             var IsInRole = _httpContextAccessor.HttpContext.User.IsInRole("Admin");
             var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
             var drug = new Drug();
 
             if (!drugExist)
             {
-                response.Message = $"Drug with id {drugId} does not exist!";
+                response.Message = $"Drug with id {DrugIds} does not exist!";
                 return response;
             }
 
-            drug = IsInRole ? _unitOfWork.Drugs.GetDrug(q => q.Id == drugId && !q.IsDeleted) : 
-            _unitOfWork.Drugs.GetDrug(q => q.Id == drugId
+            drug = IsInRole ? _unitOfWork.Drugs.GetDrug(q => q.Id == DrugIds && !q.IsDeleted) : 
+            _unitOfWork.Drugs.GetDrug(q => q.Id == DrugIds
                                                 && q.UserId == userIdClaim
                                                 && !q.IsDeleted);
 

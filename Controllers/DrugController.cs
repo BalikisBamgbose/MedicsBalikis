@@ -67,9 +67,9 @@ namespace Medics.Controllers
             return View(response.Data);
         }
 
-        public IActionResult GetDrugDetail(string id)
+        public IActionResult GetDrugDetail(string DrugIds)
         {
-            var response = _drugService.GetDrug(id);
+            var response = _drugService.GetDrug(DrugIds);
             ViewData["Message"] = response.Message;
             ViewData["Status"] = response.Status;
 

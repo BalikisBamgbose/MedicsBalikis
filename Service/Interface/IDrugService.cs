@@ -12,7 +12,7 @@ namespace Medics.Service.Interface
         BaseResponseModel Create(CreateDrugViewModel request);
         BaseResponseModel Delete(string drugId);
         BaseResponseModel Update(string drugId, UpdateDrugViewModel updatedrugDto);
-        DrugResponseModel GetDrug(string drugId);
+        DrugResponseModel GetDrug(string DrugIds);
         DrugsResponseModel GetAllDrugs();
         DrugsResponseModel GetDrugsByCategoryId(string categoryId);
         DrugsResponseModel DisplayDrug();

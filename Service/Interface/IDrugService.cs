@@ -1,5 +1,6 @@
 using Medics.Models;
 using Medics.Models.Drug;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace Medics.Service.Interface
         DrugsResponseModel GetAllDrugs();
         DrugsResponseModel GetDrugsByCategoryId(string categoryId);
         DrugsResponseModel DisplayDrug();
+        IEnumerable<SelectListItem> SelectDrugs();
     }
 }

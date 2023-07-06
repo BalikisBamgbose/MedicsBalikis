@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Medics.Repository.Implementation
@@ -16,10 +17,20 @@ namespace Medics.Repository.Implementation
         {
         }
 
-        public Outgoing GetOutgoing(string OutgoingId)
+		public List<Outgoing> GetAllOutgoing(Expression<Func<Outgoing, bool>> expression)
+		{
+			var outgoings = _context.Outgoing
+				 .Where(expression)
+				 .Include(s => s.Drug)
+				 .ToList();
+
+			return outgoings;
+		}
+
+		public Outgoing GetOutgoing(string OutgoingId)
         {      
-                var Outgoing = _context.Outgoing
-                    .Include(u => u.Name)
+                var outgoing = _context.Outgoing
+                    .Include(u => u.Drug)
                     .Include(c => c.Item)
                     .Include(q => q.Quantity)
                     .Include(i => i.InvoiceNo)
@@ -33,7 +44,7 @@ namespace Medics.Repository.Implementation
                     .Where(i => i.Id.Equals(OutgoingId))
                     .FirstOrDefault();
 
-                return Outgoing;
+                return outgoing;
             
         }
 
@@ -41,7 +52,7 @@ namespace Medics.Repository.Implementation
         {
             var outgoings = _context.Outgoing
                         .Where(i => i.Id.Equals(OutgoingIds))
-                        .Include(u => u.Name)
+                        .Include(u => u.Drug)
                         .Include(c => c.Item)
                         .Include(q => q.Quantity)
                         .Include(i => i.InvoiceNo)

@@ -10,12 +10,14 @@ namespace Medics.Controllers
     public class OutgoingController : Controller
     {
         private readonly IOutgoingService _outgoingService;
+        private readonly IDrugService _drugService;
         private readonly INotyfService _notyf;
 
-        public OutgoingController(IOutgoingService outgoingService, INotyfService notyf)
+        public OutgoingController(IOutgoingService outgoingService, INotyfService notyf, IDrugService drugService)
         {
             _outgoingService = outgoingService;
             _notyf = notyf;
+            _drugService = drugService;
         }
         public IActionResult Index()
         {
@@ -28,6 +30,9 @@ namespace Medics.Controllers
         }
         public IActionResult CreateOutgoing()
         {
+            ViewBag.Drugs = _drugService.SelectDrugs();
+            ViewData["Message"] = "";
+            ViewData["Status"] = false;
             return View();
         }
 
@@ -74,7 +79,7 @@ namespace Medics.Controllers
             {
                 Id = response.Data.Id,
                 Item= response.Data.Item,
-                Name = response.Data.Name,
+                Drug = response.Data.Drug,
                 DeliveredTo = response.Data.DeliveredTo,
                 Purpose = response.Data.Purpose,
                 Quantity = response.Data.Quantity,

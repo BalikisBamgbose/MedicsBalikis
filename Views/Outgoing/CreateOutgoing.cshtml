@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Medics.Models.Outgoing.CreateOutgoingViewModel
+@{
     ViewData["Title"] = "Create New Outgoing List";
 }
 
@@ -8,12 +9,15 @@
           <div class="col-md-6">
                <form asp-action="CreateOutgoing">
                     <div class="col-md-12 mb-2">
-                         <label for="Name" class="form-label">Name:</label>
-                         <input type="text" class="form-control" placeholder="Enter Outgoing Item" name="Name">
+
+                    <label class="form-label">Drug:</label>
+                    <select asp-for="DrugId" class="form-control" asp-items="@ViewBag.Drugs" data-placeholder="Select Drugs">
+                    </select>
+                    <span asp-validation-for="DrugId" class="text-danger"></span>
                     </div>
                     <div class="col-md-12 mb-2">
-                         <label for="Item" class="form-label">Item:</label>
-                         <input type="text" class="form-control" placeholder="Enter Item" name="Item">
+                         <label for="Item" class="form-label">Item Type:</label>
+                         <input type="text" class="form-control" placeholder="Enter Item Type" name="Item">
                     </div>
                     <div class="col-md-12 mb-2">
                          <label for="DeliveredTo" class="form-label">DeliveredTo:</label>

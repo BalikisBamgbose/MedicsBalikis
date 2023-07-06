@@ -30,19 +30,20 @@ namespace Medics.Service.Implementation
         {
             var response = new BaseResponseModel();
             var createdBy = _httpContextAccessor.HttpContext.User.Identity.Name;
+            var selectDrugs = _unitOfWork.Drugs.Get(request.DrugId);
+          //  var isOutgoingExist = _unitOfWork.Outgoings.Exists(c => c.drug == request.drug);
 
-            var isOutgoingExist = _unitOfWork.Outgoings.Exists(c => c.Name == request.Name);
-
-            if (isOutgoingExist)
-            {
-                response.Message = $"Outgoing Item with name {request.Name} already exist!";
-                return response;
-            }
+            //if (isOutgoingExist)
+            //{
+            //    response.Message = $"Outgoing Item with name {request.drug} already exist!";
+            //    return response;
+            //}
 
             var outgoing = new Outgoing()
             {
                 Item = request.Item,
-                Name = request.Name,
+                Drug = selectDrugs,
+                DrugId = selectDrugs.Id,
                 Quantity = request.Quantity,
                 Purpose = request.Purpose,
                 CreatedBy = createdBy,
@@ -102,7 +103,7 @@ namespace Medics.Service.Implementation
 
             try
             {
-                var outgoings = _unitOfWork.Outgoings.GetAll(i => i.IsDeleted == false);
+                var outgoings = _unitOfWork.Outgoings.GetAllOutgoing(i => i.IsDeleted == false);
 
                 if (outgoings is null || outgoings.Count == 0)
                 {
@@ -115,7 +116,7 @@ namespace Medics.Service.Implementation
                    {
                        Id = i.Id,
                        Item = i.Item,
-                       Name = i.Name,
+                       Drug = i.Drug.DrugName,
                        Quantity = i.Quantity,
                        Purpose = i.Purpose,
                        CreatedBy = i.CreatedBy,
@@ -158,7 +159,7 @@ namespace Medics.Service.Implementation
                 {
                     Id = outgoings.Id,
                     Item = outgoings.Item,
-                    Name = outgoings.Name,
+                    Drug = outgoings.Drug.DrugName,
                     Quantity = outgoings.Quantity,
                     Purpose = outgoings.Purpose,
                     DeliveredTo = outgoings.DeliveredTo
@@ -191,7 +192,7 @@ namespace Medics.Service.Implementation
             var outgoing = _unitOfWork.Outgoings.Get(outgoingId);
 
             outgoing.Item = outgoing.Item;
-            outgoing.Name = outgoing.Name; 
+            outgoing.Drug.DrugName = outgoing.Drug.DrugName; 
             outgoing.Quantity = outgoing.Quantity;
             outgoing.Purpose = outgoing.Purpose;
             outgoing.DeliveredTo = outgoing.DeliveredTo;

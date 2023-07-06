@@ -34,8 +34,7 @@ namespace Medics.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ExpDate")
                         .HasColumnType("longtext");
@@ -53,16 +52,11 @@ namespace Medics.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("Category", (string)null);
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("Medics.Entities.Drug", b =>
@@ -80,8 +74,7 @@ namespace Medics.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("DrugName")
                         .HasColumnType("longtext");
@@ -90,7 +83,7 @@ namespace Medics.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsClosed")
                         .HasColumnType("tinyint(1)");
@@ -108,23 +101,19 @@ namespace Medics.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Prices")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Quantity")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Prices");
-
-                    b.HasIndex("Quantity");
-
                     b.HasIndex("UserId");
 
-                    b.ToTable("Drug", (string)null);
+                    b.ToTable("Drugs");
                 });
 
             modelBuilder.Entity("Medics.Entities.DrugCategory", b =>
@@ -133,7 +122,6 @@ namespace Medics.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CategoryId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CreatedBy")
@@ -169,7 +157,7 @@ namespace Medics.Migrations
 
                     b.HasIndex("DrugId");
 
-                    b.ToTable("DrugCategory", (string)null);
+                    b.ToTable("DrugCategory");
                 });
 
             modelBuilder.Entity("Medics.Entities.Incoming", b =>
@@ -193,15 +181,13 @@ namespace Medics.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("InvoiceNo")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ItemName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime(6)");
@@ -213,23 +199,17 @@ namespace Medics.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Quantity")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("SupplierName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("SupplyDate")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InvoiceNo");
-
-                    b.ToTable("Incoming", (string)null);
+                    b.ToTable("Incomings");
                 });
 
             modelBuilder.Entity("Medics.Entities.Outgoing", b =>
@@ -253,12 +233,13 @@ namespace Medics.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("DeliveredTo")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("DeliveryDate")
                         .HasColumnType("longtext");
+
+                    b.Property<string>("DrugId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ExpDate")
                         .HasColumnType("longtext");
@@ -270,7 +251,7 @@ namespace Medics.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Item")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime(6)");
@@ -281,37 +262,26 @@ namespace Medics.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
                     b.Property<string>("Purpose")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Quantity")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ReceiptNo")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Sale")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("SupplyDate")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Item");
+                    b.HasIndex("DrugId");
 
-                    b.HasIndex("Sale");
-
-                    b.ToTable("Outgoing", (string)null);
+                    b.ToTable("Outgoing");
                 });
 
             modelBuilder.Entity("Medics.Entities.Role", b =>
@@ -329,8 +299,7 @@ namespace Medics.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ExpDate")
                         .HasColumnType("longtext");
@@ -348,16 +317,11 @@ namespace Medics.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("RoleName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoleName")
-                        .IsUnique();
-
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Medics.Entities.User", b =>
@@ -375,7 +339,6 @@ namespace Medics.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("ExpDate")
@@ -400,19 +363,16 @@ namespace Medics.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("RoleId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Medics.Entities.Drug", b =>
@@ -426,19 +386,24 @@ namespace Medics.Migrations
 
             modelBuilder.Entity("Medics.Entities.DrugCategory", b =>
                 {
-                    b.HasOne("Medics.Entities.Drug", "Drug")
-                        .WithMany("DrugCategorys")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Medics.Entities.Category", "Category")
                         .WithMany("DrugCategorys")
-                        .HasForeignKey("DrugId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("Medics.Entities.Drug", "Drug")
+                        .WithMany("DrugCategorys")
+                        .HasForeignKey("DrugId");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Drug");
+                });
+
+            modelBuilder.Entity("Medics.Entities.Outgoing", b =>
+                {
+                    b.HasOne("Medics.Entities.Drug", "Drug")
+                        .WithMany()
+                        .HasForeignKey("DrugId");
 
                     b.Navigation("Drug");
                 });
@@ -447,9 +412,7 @@ namespace Medics.Migrations
                 {
                     b.HasOne("Medics.Entities.Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
                 });

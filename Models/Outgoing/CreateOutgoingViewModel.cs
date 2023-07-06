@@ -10,9 +10,10 @@ namespace Medics.Models.Outgoing
     {
         [Required(ErrorMessage = "Enter an Item")]
         public string Item {get; set;}
+        public string DrugId { get; set; }
 
         [Required(ErrorMessage = "Enter Ougoing Item Name")]
-        public string Name {get; set;}  
+        //public Drugs drug {get; set;}  
         public string DeliveredTo {get; set;}  
         public string Quantity {get; set;}
 

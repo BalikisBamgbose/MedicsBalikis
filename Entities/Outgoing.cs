@@ -8,7 +8,8 @@ namespace Medics.Entities
     public class Outgoing : BaseEntity
     {
         public string Item {get; set;}
-        public string Name {get; set;}  
+        public Drug Drug {get; set;}
+        public string DrugId { get; set; }
         public string DeliveredTo {get; set;}  
         public string Quantity {get; set;}
         public string Purpose {get; set;}

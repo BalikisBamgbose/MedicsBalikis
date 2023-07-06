@@ -4,6 +4,7 @@ using Medics.Models.Category;
 using Medics.Models.Drug;
 using Medics.Repository.Interface;
 using Medics.Service.Interface;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
 using System.Security.Claims;
 
@@ -290,6 +291,16 @@ namespace Medics.Service.Implementation
             }
 
             return response;
+        }
+
+        public IEnumerable<SelectListItem> SelectDrugs()
+        {
+            return _unitOfWork.Drugs.SelectAll(c => c.IsDeleted == false).Select(dru => new SelectListItem()
+            {
+                Text = dru.DrugName,
+                Value = dru.Id
+            }
+            );
         }
 
         public BaseResponseModel Update(string drugId, UpdateDrugViewModel request)

@@ -8,9 +8,9 @@
           <div class="col-md-4">
                <form asp-action="CreateIncoming">
                    
-                    <div>
+                    @*<div>
                          <a asp-controller="Incoming" asp-action="CreateIncoming" class="btn btn-outline-primary">submit</a>
-                    </div>
+                    </div>*@
 
                     <div class="col-md-12 mb-2">
                          <label for="Name" class="form-label">SupplierName:</label>
@@ -37,12 +37,10 @@
                          <label for="Bill" class="form-label">Bill:</label>
                          <input class="form-control" placeholder="Enter Bill" name="Bill">
                     </div>
-                         
- 
 
-                    @*<div class="col-md-12" text-allign : top-right>
+                    <div class="col-md-12" text-allign : top-right>
                          <button type="submit" class="btn btn-primary">Create Incoming</button>
-                    </div>*@
+                    </div>
                    
                </form>
           </div>

@@ -132,7 +132,7 @@ namespace Medics.Service.Implementation
                     .Where(q => !q.IsDeleted)
                     .Select(drug => new DrugViewModel
                     { 
-                        DrugIds = drug.Id,                        
+                        Id = drug.Id,                        
                         Quantity = drug.Quantity,
                         Prices = drug.Prices.ToString(),
                         ImageUrl = drug.ImageUrl,
@@ -183,7 +183,7 @@ namespace Medics.Service.Implementation
                     .Where(q => q.IsDeleted == false)
                     .Select(drug => new DrugViewModel
                     {
-                        DrugIds = drug.Id,
+                        Id = drug.Id,
                         //Quantity = drug.Quantity,
                         Drugs = drug.DrugName,
                         Description = drug.Description,
@@ -238,7 +238,7 @@ namespace Medics.Service.Implementation
             response.Status = true;
             response.Data = new DrugViewModel
             {
-                DrugIds = drug.Id,
+                Id = drug.Id,
                 Quantity = drug.Quantity,
                 Prices = drug.Prices.ToString(),
                 ImageUrl = drug.ImageUrl,
@@ -273,7 +273,7 @@ namespace Medics.Service.Implementation
                 response.Data = drugs
                                     .Select(drug => new DrugViewModel
                                     {
-                                        DrugIds = drug.Id,
+                                        Id = drug.Id,
                                         Quantity = drug.Drug.Quantity,
                                         Prices = drug.Drug.Prices.ToString(),
                                         ImageUrl = drug.Drug.ImageUrl,

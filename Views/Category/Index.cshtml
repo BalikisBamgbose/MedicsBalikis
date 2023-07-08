@@ -19,6 +19,8 @@
                    <th scope="col">Name</th>
                    <th scope="col">Description</th>
                    <th scope="col">Action</th>
+                   <th scope="col"></th>
+
               </tr>
          </thead>
          <tbody>
@@ -30,7 +32,7 @@
                        <td>@item.Description</td>
                        <td>
                             <div class="btn-group">
-                                 <a asp-controller="Drug" asp-action="GetDrugByCategory" asp-route-id="@item.Id" class="btn btn-primary">View Drugs</a>
+                                 <a asp-controller="Category" asp-action="GetCategory" asp-route-id="@item.Id" class="btn btn-primary">View Category</a>
                             </div>
                        </td>
                   </tr>

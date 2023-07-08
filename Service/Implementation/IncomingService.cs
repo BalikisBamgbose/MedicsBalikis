@@ -15,27 +15,29 @@ namespace Medics.Service.Implementation
     public class IncomingService : IIncomingService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IDrugService _drugService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public IncomingService(
             IUnitOfWork unitOfWork,
-            IHttpContextAccessor httpContextAccessor)
+            IHttpContextAccessor httpContextAccessor,
+            IDrugService drugService)
         {
             _unitOfWork = unitOfWork;
             _httpContextAccessor = httpContextAccessor;
+            _drugService = drugService;
         }
         public BaseResponseModel CreateIncoming(CreateIncomingViewModel request)
         {
             var response = new BaseResponseModel();
             var createdBy = _httpContextAccessor.HttpContext.User.Identity.Name;
+            //var isIncomingExist = _unitOfWork.Incomings.Exists(c => c.ItemName == request.ItemName);
 
-            var isIncomingExist = _unitOfWork.Incomings.Exists(c => c.ItemName == request.ItemName);
-
-            if (isIncomingExist)
-            {
-                response.Message = $"Incoming with name {request.ItemName} already exist!";
-                return response;
-            }
+            //if (isIncomingExist)
+            //{
+            //    response.Message = $"Incoming with name {request.ItemName} already exist!";
+            //    return response;
+            //}
 
             var incoming = new Incoming()
             {

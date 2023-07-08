@@ -70,5 +70,6 @@ namespace Medics.Repository.Implementations
         {
             return _context.Set<T>().Where(expression).ToList();
         }
+
     }
 }

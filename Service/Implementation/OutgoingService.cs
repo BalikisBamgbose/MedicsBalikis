@@ -31,11 +31,11 @@ namespace Medics.Service.Implementation
             var response = new BaseResponseModel();
             var createdBy = _httpContextAccessor.HttpContext.User.Identity.Name;
             var selectDrugs = _unitOfWork.Drugs.Get(request.DrugId);
-          //  var isOutgoingExist = _unitOfWork.Outgoings.Exists(c => c.drug == request.drug);
+            //var isOutgoingEnough = _unitOfWork.Outgoings.Exists(c => c.Drug == request.Drug);
 
-            //if (isOutgoingExist)
+            //if (isOutgoingEnough)
             //{
-            //    response.Message = $"Outgoing Item with name {request.drug} already exist!";
+            //    response.Message = $"Outgoing Item with name {request.Drug} already exist!";
             //    return response;
             //}
 
@@ -62,7 +62,7 @@ namespace Medics.Service.Implementation
             }
             catch (Exception ex)
             {
-                response.Message = $"Failed to create Incoming. {ex.Message}";
+                response.Message = $"Failed to create Outgoing. {ex.Message}";
                 return response;
             }
         }

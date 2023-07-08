@@ -7,10 +7,10 @@
 
 @await Html.PartialAsync("_ListAlert", Model)
 
-<div>
+@*<div>
      <a asp-controller="Drug" asp-action="Create" class="btn btn-outline-primary">Add New Drug</a>
 </div>
-
+*@
 @if (Model is not null)
 {
     <table class="table">
@@ -37,9 +37,9 @@
                     }
                        <td scope="row">@item.Description</td>
                        <td scope="row">@item.Quantity
+                           
                             <div class="btn-group">
-                                 <a asp-controller="Drug" asp-action="GetDrugDetail" asp-route-id="@item.DrugIds" class="btn btn-info btn-sm text-white">View Drug</a>
-
+                                 <a asp-controller="Drug" asp-action="GetDrugDetail" asp-route-id="@item.Id" class="btn btn-primary">View Drug</a>
                             </div>
                        </td>
                   </tr>

@@ -9,7 +9,7 @@ namespace Medics.Models.Drug
     public class DrugViewModel
     {
         public string UserId { get; set; }
-        public string DrugIds { get; set; }
+        public string Id { get; set; }
         public string Drugs { get; set; }
         public string Description{ get; set; }
         public string Prices{ get; set; }

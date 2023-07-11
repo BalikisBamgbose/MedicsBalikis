@@ -1,3 +1,4 @@
+using Medics.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Medics.Entities
         public string DrugId { get; set; }
         public string DeliveredTo {get; set;}  
         public string Quantity {get; set;}
-        public string Purpose {get; set;}
+        public Purpose Purpose {get; set;}
         public string Sale {get; set;}
         public string InvoiceNo { get; set; }
         public string SupplyDate { get; set; }

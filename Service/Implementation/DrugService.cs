@@ -184,7 +184,7 @@ namespace Medics.Service.Implementation
                     .Select(drug => new DrugViewModel
                     {
                         Id = drug.Id,
-                        //Quantity = drug.Quantity,
+                        Quantity = drug.Quantity,
                         Drugs = drug.DrugName,
                         Description = drug.Description,
                         UserId = drug.UserId,

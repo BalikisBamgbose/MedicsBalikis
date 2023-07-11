@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Medics.Migrations
 {
     [DbContext(typeof(MedicsContext))]
-    [Migration("20230706123433_Working")]
-    partial class Working
+    [Migration("20230711074350_RE-New")]
+    partial class RENew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -264,8 +264,8 @@ namespace Medics.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Purpose")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Purpose")
+                        .HasColumnType("int");
 
                     b.Property<string>("Quantity")
                         .HasColumnType("longtext");

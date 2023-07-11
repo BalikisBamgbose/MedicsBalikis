@@ -81,7 +81,7 @@ namespace Medics.Controllers
                 Item= response.Data.Item,
                 Drug = response.Data.Drug,
                 DeliveredTo = response.Data.DeliveredTo,
-                Purpose = response.Data.Purpose,
+               // Purpose = response.Data.Purpose,
                 Quantity = response.Data.Quantity,
                 Sale= response.Data.Sale
 

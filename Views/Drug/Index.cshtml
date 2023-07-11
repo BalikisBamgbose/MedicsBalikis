@@ -19,9 +19,10 @@
                    <th scope="col">#</th>
                @* @if (User.IsInRole("Admin"))*@
                 
-                   <th scope="col">DrugName</th>
-                
+                   <th scope="col">DrugName</th>     
                    <th scope="col">Description</th>
+                   <th scope="col">Quantity</th>
+
                    <th scope="col">Action</th>
               </tr>
          </thead>
@@ -30,15 +31,14 @@
             @foreach (var item in Model)
             {
                   <tr>
-                       <td scope="row">@count</td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                           <td scope="row">@item.Drugs</td>
-                    }
+                      
+                       <td scope="row">@count</td>                                  
+                       <td scope="row">@item.Drugs</td>                
                        <td scope="row">@item.Description</td>
-                       <td scope="row">@item.Quantity
+                       <td scope="row">@item.Quantity</td>
                            
-                            <div class="btn-group">
+                          <td>
+                             <div class="btn-group">
                                  <a asp-controller="Drug" asp-action="GetDrugDetail" asp-route-id="@item.Id" class="btn btn-primary">View Drug</a>
                             </div>
                        </td>

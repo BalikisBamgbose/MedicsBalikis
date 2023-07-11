@@ -22,14 +22,16 @@ html {
 .header {
      padding: 60px;
      text-align: center;
-     background-color:lightpink ;
+     background-color: lightpink;
      color: gold;
      font-size: 30px;
+    
 }
 body {
      margin-bottom: 60px;
      background-color: lightcoral;
      border-color: black;
+     /*background-image:communitypharmacyni.co.uk/wp-content/uploads/2020/07/pharmacist_with_medication_basket.jpg:;*/
 }
 footer {
      background-color: purple;

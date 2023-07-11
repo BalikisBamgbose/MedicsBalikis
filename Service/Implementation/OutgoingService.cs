@@ -1,4 +1,5 @@
 using Medics.Entities;
+using Medics.Enums;
 using Medics.Models;
 using Medics.Models.Incoming;
 using Medics.Models.Outgoing;
@@ -31,21 +32,27 @@ namespace Medics.Service.Implementation
             var response = new BaseResponseModel();
             var createdBy = _httpContextAccessor.HttpContext.User.Identity.Name;
             var selectDrugs = _unitOfWork.Drugs.Get(request.DrugId);
-            //var isOutgoingEnough = _unitOfWork.Outgoings.Exists(c => c.Drug == request.Drug);
+            var purpose = Enum.GetValues(typeof(Purpose))
+                               .Cast<Purpose>()
+                               .Select(g => new SelectListItem
+                               {
+                                   Value = g.ToString(),
+                                   Text = g.ToString()
+                               });
 
-            //if (isOutgoingEnough)
-            //{
-            //    response.Message = $"Outgoing Item with name {request.Drug} already exist!";
-            //    return response;
-            //}
-
+            if (selectDrugs.Quantity is null )
+            {
+                response.Message = $"Outgoing Item is too low!";
+                return response;
+            }
+            else { 
             var outgoing = new Outgoing()
             {
                 Item = request.Item,
                 Drug = selectDrugs,
                 DrugId = selectDrugs.Id,
                 Quantity = request.Quantity,
-                Purpose = request.Purpose,
+               // Purpose = Purpose,
                 CreatedBy = createdBy,
                 DeliveredTo = request.DeliveredTo
 
@@ -64,6 +71,7 @@ namespace Medics.Service.Implementation
             {
                 response.Message = $"Failed to create Outgoing. {ex.Message}";
                 return response;
+            }
             }
         }
 

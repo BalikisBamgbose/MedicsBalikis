@@ -262,8 +262,8 @@ namespace Medics.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Purpose")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Purpose")
+                        .HasColumnType("int");
 
                     b.Property<string>("Quantity")
                         .HasColumnType("longtext");

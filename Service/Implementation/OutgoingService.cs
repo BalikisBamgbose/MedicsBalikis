@@ -32,13 +32,13 @@ namespace Medics.Service.Implementation
             var response = new BaseResponseModel();
             var createdBy = _httpContextAccessor.HttpContext.User.Identity.Name;
             var selectDrugs = _unitOfWork.Drugs.Get(request.DrugId);
-            var purpose = Enum.GetValues(typeof(Purpose))
-                               .Cast<Purpose>()
-                               .Select(g => new SelectListItem
-                               {
-                                   Value = g.ToString(),
-                                   Text = g.ToString()
-                               });
+            //var purpose = Enum.GetValues(typeof(Purpose))
+            //                   .Cast<Purpose>()
+            //                   .Select(g => new SelectListItem
+            //                   {
+            //                       Value = g.ToString(),
+            //                       Text = g.ToString()
+            //                   });
 
             if (selectDrugs.Quantity is null )
             {
@@ -52,7 +52,7 @@ namespace Medics.Service.Implementation
                 Drug = selectDrugs,
                 DrugId = selectDrugs.Id,
                 Quantity = request.Quantity,
-               // Purpose = Purpose,
+                Purpose = request.Purpose,
                 CreatedBy = createdBy,
                 DeliveredTo = request.DeliveredTo
 

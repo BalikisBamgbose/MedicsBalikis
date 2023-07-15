@@ -114,52 +114,52 @@ namespace Medics.Service.Implementation
             }
         }
 
-        public DrugsResponseModel DisplayDrug()
-        {
-            var response = new DrugsResponseModel();
+        //public DrugsResponseModel DisplayDrug()
+        //{
+        //    var response = new DrugsResponseModel();
 
-            try
-            {
-                var drugs = _unitOfWork.Drugs.GetDrugs();
+        //    try
+        //    {
+        //        var drugs = _unitOfWork.Drugs.GetDrugs();
 
-                if (drugs.Count == 0)
-                {
-                    response.Message = "No drug found!";
-                    return response;
-                }
+        //        if (drugs.Count == 0)
+        //        {
+        //            response.Message = "No drug found!";
+        //            return response;
+        //        }
 
-                response.Data = drugs
-                    .Where(q => !q.IsDeleted)
-                    .Select(drug => new DrugViewModel
-                    { 
-                        Id = drug.Id,                        
-                        Quantity = drug.Quantity,
-                        Prices = drug.Prices.ToString(),
-                        ImageUrl = drug.ImageUrl,
-                        UserId = drug.UserId,
-                        DrugCategorys= drug.DrugCategorys
-                            .Where(c => !c.IsDeleted)
-                            .Select(c => new CategoryViewModel
-                            {
-                                Id = c.Category.Id,
-                                Name = c.Category.Name,
-                                Description = c.Category.Description,
+        //        response.Data = drugs
+        //            .Where(q => !q.IsDeleted)
+        //            .Select(drug => new DrugViewModel
+        //            { 
+        //                Id = drug.Id,                        
+        //                Quantity = drug.Quantity,
+        //                Prices = drug.Prices.ToString(),
+        //                ImageUrl = drug.ImageUrl,
+        //                UserId = drug.UserId,
+        //                DrugCategorys= drug.DrugCategorys
+        //                    .Where(c => !c.IsDeleted)
+        //                    .Select(c => new CategoryViewModel
+        //                    {
+        //                        Id = c.Category.Id,
+        //                        Name = c.Category.Name,
+        //                        Description = c.Category.Description,
 
-                            })
-                            .ToList()
-                    }).ToList();
+        //                    })
+        //                    .ToList()
+        //            }).ToList();
 
-                response.Status = true;
-                response.Message = "Success";
-            }
-            catch (Exception ex)
-            {
-                response.Message = $"An error occured: {ex.Message}";
-                return response;
-            }
+        //        response.Status = true;
+        //        response.Message = "Success";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.Message = $"An error occured: {ex.Message}";
+        //        return response;
+        //    }
 
-            return response;
-        }
+        //    return response;
+        //}
 
         public DrugsResponseModel GetAllDrugs()
         {
@@ -185,8 +185,9 @@ namespace Medics.Service.Implementation
                     {
                         Id = drug.Id,
                         Quantity = drug.Quantity,
-                        Drugs = drug.DrugName,
+                        DrugName = drug.DrugName,
                         Description = drug.Description,
+                        Prices = drug.Prices,
                         UserId = drug.UserId,
                         DrugCategorys = drug.DrugCategorys
                         .Select(c => new CategoryViewModel
@@ -209,22 +210,21 @@ namespace Medics.Service.Implementation
             return response;
         }
 
-        public DrugResponseModel GetDrug(string DrugIds)
+        public DrugResponseModel GetDrug(string Id)
         {
             var response = new DrugResponseModel();
-            var drugExist = _unitOfWork.Drugs.Exists(q => q.Id == DrugIds && q.IsDeleted == false);
+            var drugExist = _unitOfWork.Drugs.Exists(q => q.Id == Id && q.IsDeleted == false);
             var IsInRole = _httpContextAccessor.HttpContext.User.IsInRole("Admin");
             var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-            var drug = new Drug();
 
             if (!drugExist)
             {
-                response.Message = $"Drug with id {DrugIds} does not exist!";
+                response.Message = $"Drug with id {Id} does not exist!";
                 return response;
             }
 
-            drug = IsInRole ? _unitOfWork.Drugs.GetDrug(q => q.Id == DrugIds && !q.IsDeleted) : 
-            _unitOfWork.Drugs.GetDrug(q => q.Id == DrugIds
+           var drug = IsInRole ? _unitOfWork.Drugs.GetDrug(q => q.Id == Id && !q.IsDeleted) : 
+            _unitOfWork.Drugs.GetDrug(q => q.Id == Id
                                                 && q.UserId == userIdClaim
                                                 && !q.IsDeleted);
 
@@ -239,6 +239,7 @@ namespace Medics.Service.Implementation
             response.Data = new DrugViewModel
             {
                 Id = drug.Id,
+                DrugName= drug.DrugName,    
                 Quantity = drug.Quantity,
                 Prices = drug.Prices.ToString(),
                 ImageUrl = drug.ImageUrl,
@@ -278,7 +279,7 @@ namespace Medics.Service.Implementation
                                         Prices = drug.Drug.Prices.ToString(),
                                         ImageUrl = drug.Drug.ImageUrl,
                                         UserId = drug.Drug.UserId,
-                                        Drugs = drug.Drug.DrugName,
+                                        DrugName = drug.Drug.DrugName,
                                     }).ToList();
 
                 response.Status = true;
@@ -328,7 +329,7 @@ namespace Medics.Service.Implementation
 
             drug.Description = request.Description;
             drug.ModifiedBy = modifiedBy;
-            drug.DrugName= request.Drug;
+            drug.DrugName= request.DrugName;
 
             try
             {

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Medics.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\IBCIRCUIT\\Desktop\\Medics\\wwwroot\\DrugPhoto.JPG",
+      "PackagePath": "staticwebassets\\DrugPhoto.JPG"
+    },
+    {
       "Id": "C:\\Users\\IBCIRCUIT\\Desktop\\Medics\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

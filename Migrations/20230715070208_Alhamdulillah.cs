@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Medics.Migrations
 {
-    public partial class RENew : Migration
+    public partial class Alhamdulillah : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -185,7 +185,7 @@ namespace Medics.Migrations
                     DrugId = table.Column<string>(type: "varchar(255)", nullable: true),
                     DeliveredTo = table.Column<string>(type: "longtext", nullable: true),
                     Quantity = table.Column<string>(type: "longtext", nullable: true),
-                    Purpose = table.Column<int>(type: "int", nullable: false),
+                    Purpose = table.Column<string>(type: "longtext", nullable: true),
                     Sale = table.Column<string>(type: "longtext", nullable: true),
                     InvoiceNo = table.Column<string>(type: "longtext", nullable: true),
                     SupplyDate = table.Column<string>(type: "longtext", nullable: true),

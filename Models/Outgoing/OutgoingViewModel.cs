@@ -15,7 +15,7 @@ namespace Medics.Models.Outgoing
         public string DrugId { get; set; }
         public string DeliveredTo {get; set;}  
         public string Quantity {get; set;}
-        public Purpose Purpose {get; set;}
+        public string Purpose {get; set;}
         public string Sale {get; set;}
         public string CreatedBy { get; set;}       
         public List<DrugViewModel> Drugs { get; set; }

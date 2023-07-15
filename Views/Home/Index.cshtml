@@ -16,7 +16,7 @@
 {
     @foreach (var drug in Model)
     {
-        <h4>@drug.Drugs</h4>
+        <h4>@drug.DrugName</h4>
 
         <div>
              <button type="button" class="btn btn-warning btn-sm">
@@ -24,7 +24,7 @@
              </button>
             @if (drug.UserId != User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value || User.IsInRole("Admin"))
             {
-             <a asp-controller="Drug" asp-action="GetDrugDetail" asp-route-id="@drug.Id" class="btn btn-success btn-sm">
+             <a asp-controller="Drug" asp-action="GetDrug" asp-route-id="@drug.Id" class="btn btn-success btn-sm">
                   View Drug
              </a>
             }

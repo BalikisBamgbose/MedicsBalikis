@@ -13,10 +13,10 @@ namespace Medics.Service.Interface
         BaseResponseModel Create(CreateDrugViewModel request);
         BaseResponseModel Delete(string drugId);
         BaseResponseModel Update(string drugId, UpdateDrugViewModel updatedrugDto);
-        DrugResponseModel GetDrug(string DrugIds);
+        DrugResponseModel GetDrug(string Id);
         DrugsResponseModel GetAllDrugs();
         DrugsResponseModel GetDrugsByCategoryId(string categoryId);
-        DrugsResponseModel DisplayDrug();
+        //DrugsResponseModel DisplayDrug();
         IEnumerable<SelectListItem> SelectDrugs();
     }
 }

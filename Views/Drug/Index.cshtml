@@ -22,6 +22,8 @@
                    <th scope="col">DrugName</th>     
                    <th scope="col">Description</th>
                    <th scope="col">Quantity</th>
+                   <th scope="col">Price</th>
+                  
 
                    <th scope="col">Action</th>
               </tr>
@@ -33,13 +35,17 @@
                   <tr>
                       
                        <td scope="row">@count</td>                                  
-                       <td scope="row">@item.Drugs</td>                
+                       <td scope="row">@item.DrugName</td>                
                        <td scope="row">@item.Description</td>
                        <td scope="row">@item.Quantity</td>
+                       <td scope="row">@item.Prices</td>
+                       
+
+
                            
                           <td>
                              <div class="btn-group">
-                                 <a asp-controller="Drug" asp-action="GetDrugDetail" asp-route-id="@item.Id" class="btn btn-primary">View Drug</a>
+                                 <a asp-controller="Drug" asp-action="GetDrug" asp-route-id="@item.Id" class="btn btn-primary">View Drug</a>
                             </div>
                        </td>
                   </tr>
